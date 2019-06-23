@@ -8,7 +8,7 @@ class ContainerPage extends Component {
       <div className="mainpage">
         <Header />
         <section>{this.props.children}</section>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }
