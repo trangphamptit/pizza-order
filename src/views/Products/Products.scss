@@ -1,0 +1,107 @@
+.productspage {
+  width: 100%;
+  //   height: 400px;
+  background-color: gray;
+  padding-left: 20px;
+  padding-right: 20px;
+  .products-banner {
+    width: 100%;
+    height: 22vw;
+    margin-bottom: 20px;
+
+    img {
+      width: 100%;
+      vertical-align: middle;
+
+      height: 100%;
+      //   max-width: 250px;
+    }
+  }
+  .products {
+    width: 100%;
+    display: flex;
+
+    .product-item {
+      width: 25%;
+      //   max-height: 300px;
+      margin-bottom: 15px;
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 15px;
+      background-color: var(--mainGray);
+      .product-image img {
+        width: 100%;
+        // height: 60%;
+        height: auto;
+        max-height: 250px;
+
+        display: block;
+      }
+      .product-infor {
+        color: white;
+        width: 100%;
+        margin-top: 15px;
+        // height: 40%;
+        text-align: center;
+        line-height: 1.5rem;
+        padding-bottom: 15px;
+        .product-name {
+          font-weight: 700;
+          font-size: 1.2rem;
+          text-transform: capitalize;
+        }
+        .product-price {
+          font-size: 1rem;
+        }
+      }
+      .cart-btn {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 0.2rem 0.4rem;
+        background: blue;
+        border: none;
+        color: white;
+        font-size: 1.4rem;
+        border-radius: 0.5rem 0 0 0;
+        transform: translate(100%, 100%);
+        transition: all 1s linear;
+      }
+    }
+    .product-item:hover {
+      //   border: 0.04rem solid rgba(0, 0, 0, 0.2);
+      //   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .productspage {
+    .products {
+      // display: flex;
+      // flex-direction: column;
+      // flex-wrap: wrap;
+      // width: 100%;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      .product-item {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        margin: 10px 0px;
+        .product-infor {
+          .product-name {
+          }
+          .product-price {
+          }
+        }
+      }
+    }
+  }
+}
