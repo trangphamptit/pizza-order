@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import mainlogo from "../../image/mainlogo.png";
+import logo from "../../image/logo.jpg";
 // import HeaderTop from "./HeaderTop";
 class Header extends Component {
   render() {
@@ -21,7 +21,7 @@ class Header extends Component {
                       <Link to="/">Home</Link>
                     </li>
                     <li>
-                      <Link to="/category">Category</Link>
+                      <Link to="/listcategory">Category</Link>
                     </li>
                     <li>
                       <Link to="/userprofile">Profile</Link>
@@ -33,7 +33,7 @@ class Header extends Component {
           </div>
 
           <div className="logo">
-            <img src={mainlogo} />
+            <img src={logo} />
           </div>
           <div className="cart">
             <button type="button">

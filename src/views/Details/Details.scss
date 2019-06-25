@@ -1,11 +1,25 @@
-// .detail-banner {
-//   width: 100%;
-//   height: 300px;
-//   .detail-banner-container {
-//     width: 100%;
-//     height: 100%;
-//     margin-left: 20px;
-//     margin-right: 20px;
-//     background-color: aqua;
-//   }
-// }
+.detailpage {
+  width: 100%;
+  padding: 15px;
+  .detail-left {
+    width: 40%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .detail-right {
+    width: 60%;
+    float: right;
+    form {
+      display: flex;
+    }
+    .select {
+      margin-bottom: 30px;
+      align-items: center;
+    }
+    .select > p {
+      margin-right: 30px;
+    }
+  }
+}

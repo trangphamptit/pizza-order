@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Home from "./views/Home/Home";
 import UserProfile from "./views/UserProfile";
-import Cart from "./views/Cart/Cart";
+
 import Details from "./views/Details/Details";
 import ListCategory from "./views/ListCategory/ListCategory";
 import Products from "./views/Products/Products";
@@ -20,7 +20,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/userprofile" component={UserProfile} />
-              <Route path="/cart" component={Cart} />
+
               <Route path="/details" component={Details} />
               <Route path="/listcategory" component={ListCategory} />
               <Route path="/products" component={Products} />
