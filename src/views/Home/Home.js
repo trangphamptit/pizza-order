@@ -1,9 +1,11 @@
 import React from "react";
 import MainBlocks from "../MainBlocks";
+import Slider from "../../components/Slider/Slider";
 function Home() {
   return (
-    <div className="view">
+    <div className="homepage">
       {" "}
+      <Slider />
       <MainBlocks />{" "}
     </div>
   );
