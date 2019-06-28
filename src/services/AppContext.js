@@ -1,27 +1,26 @@
 import React, { Component } from "react";
-import Axios from "axios";
-import { apiLinks } from "./APILinks";
-const AppContext = React.createContext({
-  products: [],
-  categories: [],
-  loadProducts: () => {}
-});
-// class AppProvider extends Component {
-//   constructor(props) {
-//     super(props);
 
-//   }
-//   render() {
-//     return (
-//       <AppContext.Provider
-//         value={{
-//           ...this.state
-//         }}
-//       >
-//         {this.props.children}
-//       </AppContext.Provider>
-//     );
-//   }
-// }
-// const AppConsumer = AppContext.Consumer;
-export default AppContext;
+import { getProducts } from "./products";
+
+export const AppContext = React.createContext();
+
+class AppProvider extends Component {
+  state = {
+    products: [],
+    categories: [],
+    getProducts: async () => {
+      const products = await getProducts();
+      this.setState({ products });
+    }
+  };
+
+  render() {
+    return (
+      <AppContext.Provider value={this.state}>
+        {this.props.children}
+      </AppContext.Provider>
+    );
+  }
+}
+
+export default AppProvider;
