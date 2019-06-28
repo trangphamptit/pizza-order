@@ -1,25 +1,47 @@
+p {
+  font-size: 1.2rem;
+}
 .detailpage {
-  width: 100%;
   padding: 15px;
   .detail-left {
-    width: 40%;
-    float: left;
     display: flex;
     flex-direction: column;
     text-align: center;
+    .name {
+      text-transform: capitalize;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .image {
+      width: 100%;
+    }
   }
   .detail-right {
-    width: 60%;
-    float: right;
+    display: flex;
+    flex-direction: column;
+
+    .price {
+      font-weight: bold;
+      font-size: 1.5rem;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
     form {
       display: flex;
+      .size {
+        display: flex;
+        align-items: baseline;
+        margin-right: 30px;
+      }
     }
     .select {
       margin-bottom: 30px;
-      align-items: center;
+      display: flex;
+      align-items: baseline;
     }
     .select > p {
       margin-right: 30px;
+      margin-left: 5px;
     }
   }
 }

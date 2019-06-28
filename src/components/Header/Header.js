@@ -1,19 +1,28 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import logo from "../../image/logo.jpg";
+import logo from "../../image/logo.png";
 // import HeaderTop from "./HeaderTop";
 class Header extends Component {
+  unchecked() {
+    let element = document.getElementById("toggler");
+    console.log(element.checked);
+    if (element.checked) {
+      element.checked = false;
+    }
+    console.log(element);
+  }
+
   render() {
     return (
       <div className="header">
         <div className="header-container">
           <div className="menu-wrap">
-            <input type="checkbox" className="toggler" />
+            <input type="checkbox" id="toggler" />
             <div className="hamburger">
               <div />
             </div>
-            <div className="menu">
+            <div className="menu" onClick={this.unchecked}>
               <div>
                 <div>
                   <ul>
@@ -33,12 +42,17 @@ class Header extends Component {
           </div>
 
           <div className="logo">
-            <img src={logo} />
+            <Link to="/">
+              <img src={logo} />
+            </Link>
           </div>
+
           <div className="cart">
-            <button type="button">
-              <i class="fas fa-cart-arrow-down" />
-            </button>
+            <Link to="/cart">
+              <button type="button">
+                <i className="fas fa-cart-arrow-down" />
+              </button>
+            </Link>
           </div>
         </div>
 

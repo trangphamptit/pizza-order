@@ -1,35 +1,32 @@
 import React, { Component } from "react";
 import "./ListCategory.scss";
-import product2 from "../../image/product2.png";
+import Axios from "axios";
+import { apiLinks } from "../../services/APILinks";
+import Category from "./Category";
+import AppContext from "../../services/AppContext";
 class ListCategory extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      categories: []
+    };
+  }
+
+  componentDidMount() {
+    Axios.get(apiLinks.categories).then(res => {
+      this.setState({ categories: res.data });
+    });
+  }
+
   render() {
     return (
       <div className="listcategory">
-        <div className="category-item">
-          <img src={product2} className="category-image" />
-          <label className="category-title">durian pizza</label>
-
-          <input type="button" value="see more >>" />
-        </div>
-        <div className="category-item">
-          <img src={product2} className="category-image" />
-          <label className="category-title">durian pizza</label>
-
-          <input type="button" value="see more >>" />
-        </div>
-        <div className="category-item">
-          <img src={product2} className="category-image" />
-          <label className="category-title">durian pizza</label>
-          <div className="middle-btn">
-            <input type="button" value="see more >>" />
-          </div>
-        </div>
-        <div className="category-item">
-          <img src={product2} className="category-image" />
-          <label className="category-title">durian pizza</label>
-          <div className="middle-btn">
-            <input type="button" value="see more >>" />
-          </div>
+        <div className="row">
+          <AppContext.Consumer>
+            {this.state.categories.map(category => (
+              <Category key={category.id} category={category} />
+            ))}
+          </AppContext.Consumer>
         </div>
       </div>
     );

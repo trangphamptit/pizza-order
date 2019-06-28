@@ -1,90 +1,46 @@
-import "./Products.scss";
 import React, { Component } from "react";
-import pizza1 from "../../image/pizza1.jpg";
-import product1 from "../../image/product1.png";
+import Product from "../../components/Product/Product";
+import AppContext from "../../services/AppContext";
+import { apiLinks } from "../../services/APILinks";
 import Axios from "axios";
-import { Link } from "react-router-dom";
-class Products extends Component {
-  state = {
-    products: []
-  };
-  componentDidMount() {
-    Axios.get("https://api-mobile-shopping.herokuapp.com/api/products/").then(
-      res => {
-        const products = res.data.results;
-        this.setState({ products });
-        console.log(products);
-      }
-    );
+class ProductList extends Component {
+  constructor(props) {
+    super(props);
+    this.loadProducts = products => {
+      this.setState({
+        products
+      });
+    };
+    this.state = {
+      products: []
+    };
   }
+
+  componentDidMount() {
+    // Axios.get(apiLinks.products, { pageSize: numberOfItem }).then(res => {
+    Axios.get(apiLinks.products).then(res => {
+      this.setState({ products: res.data });
+      // console.log("test1", this.state.products);
+      console.log("test1", res.data);
+    });
+  }
+
   render() {
     return (
-      <div className="productspage">
-        {/* banner */}
-        <div className="products-banner">
-          <img src={pizza1} />
-        </div>
-
-        {/* products */}
-        <div className="products">
-          <div className="product-item">
-            <Link to="/details">
-              <div className="product-image">
-                <img src={product1} />
-              </div>
-
-              <div className="product-infor">
-                <div className="product-name">PIZZA THẬP CẨM CAO CẤP</div>
-                <div className="product-price">
-                  Cỡ Vừa: 319,000đ Cỡ lớn: 419,000đ
-                </div>
-              </div>
-              <button className="cart-btn" />
-            </Link>
-          </div>
-
-          <div className="product-item">
-            <div className="product-image">
-              <img src={product1} />
-            </div>
-
-            <div className="product-infor">
-              <div className="product-name">PIZZA THẬP CẨM CAO CẤP</div>
-              <div className="product-price">
-                Cỡ Vừa: 319,000đ Cỡ lớn: 419,000đ
-              </div>
-            </div>
-          </div>
-
-          <div className="product-item">
-            <div className="product-image">
-              <img src={product1} />
-            </div>
-
-            <div className="product-infor">
-              <div className="product-name">PIZZA THẬP CẨM CAO CẤP</div>
-              <div className="product-price">
-                Cỡ Vừa: 319,000đ Cỡ lớn: 419,000đ
-              </div>
-            </div>
-          </div>
-
-          <div className="product-item">
-            <div className="product-image">
-              <img src={product1} />
-            </div>
-
-            <div className="product-infor">
-              <div className="product-name">PIZZA THẬP CẨM CAO CẤP</div>
-              <div className="product-price">
-                Cỡ Vừa: 319,000đ Cỡ lớn: 419,000đ
-              </div>
-            </div>
-          </div>
+      <div className="products">
+        <div className="row">
+          <AppContext.Consumer>
+            {({ loadProducts }) => {
+              loadProducts(this.state.products);
+              this.state.products.map(product => (
+                <Product key={product._id} product={product} />
+              ));
+            }}
+          </AppContext.Consumer>
         </div>
       </div>
     );
   }
 }
 
-export default Products;
+export default ProductList;

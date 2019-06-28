@@ -1,10 +1,33 @@
 footer {
   padding-left: 15px;
   padding-right: 15px;
-
-  text-align: center;
-  display: flex;
+  // text-align: center;
+  display: flex !important;
   background-color: black;
   height: 80px;
   width: 100%;
+  justify-content: space-between;
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    li {
+      margin-right: 20px;
+      padding-right: 10px;
+      border-right: 1px solid white;
+
+      a {
+        color: white;
+      }
+    }
+    li.last {
+      border-right: none;
+    }
+  }
+  .footer-right {
+    color: white;
+    p {
+      text-align: center;
+    }
+  }
 }
