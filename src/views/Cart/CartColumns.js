@@ -6,16 +6,16 @@ class CartColumns extends Component {
       <div className="container-fluid text-center d-none d-lg-block">
         <div className="row">
           <div className="col-10 mx-auto col-lg-2">
-            <p className="text-uppercase">your product</p>
+            <p className="text-uppercase">product</p>
           </div>
           <div className="col-10 mx-auto col-lg-2">
-            <p className="text-uppercase">name</p>
+            <p className="text-uppercase">product name</p>
           </div>
           <div className="col-10 mx-auto col-lg-2">
             <p className="text-uppercase">price</p>
           </div>
           <div className="col-10 mx-auto col-lg-2">
-            <p className="text-uppercase">number</p>
+            <p className="text-uppercase">count</p>
           </div>
           <div className="col-10 mx-auto col-lg-2">
             <p className="text-uppercase">remove</p>

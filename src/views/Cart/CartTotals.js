@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import BillForm from "../BillForm";
 export default class CartTotals extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +15,7 @@ export default class CartTotals extends Component {
   //   }
   // };
   render() {
+    const { cartSubTotal, cartTotal, clearCart } = this.props.value;
     return (
       <React.Fragment>
         <div className="container">
@@ -24,30 +25,31 @@ export default class CartTotals extends Component {
               <button
                 className="btn btn-outline-danger text-uppercase mb-3 px-5"
                 type="button"
+                onClick={() => clearCart()}
               >
                 Xóa giỏ hàng
               </button>
             </Link>
           </div>
           <h5>
-            <span className="text-title">total:</span>
-            <strong>59000 đ</strong>
+            <span className="text-title">Tổng số tiền:</span>
+            <strong>{cartSubTotal} đ</strong>
           </h5>
 
           <h5>
-            <span className="text-title">shipping:</span>
+            <span className="text-title">Phí vận chuyển:</span>
             <strong>30000đ</strong>
           </h5>
 
           <h5>
-            <span className="text-title">Bill:</span>
-            <strong>89000đ</strong>
+            <span className="text-title">Hóa đơn:</span>
+            <strong>{cartTotal}đ</strong>
           </h5>
           <button
             className="btn btn-outline-danger text-uppercase mb-3 px-5"
             type="button"
             // onClick={() => clearCart()}
-            // onClick={this.checkLogin}
+            onClick={this.checkLogin}
           >
             Thanh toán
           </button>

@@ -14,27 +14,11 @@ import Cart from "./views/Cart/Cart";
 import BillForm from "./views/BillForm.js";
 import Login from "./views/Login/Login";
 import Signup from "./views/Signup/Signup";
-import { ProductProvider } from "./services/ProductContext";
-import { CategoryProvider } from "./services/CategoryContext";
-import AppContext from "./services/AppContext";
+import AppProvider from "./services/AppContext";
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.loadProducts = products => {
-      this.setState({
-        products
-      });
-    };
-    this.state = {
-      loadProducts: this.loadProducts,
-      products: [],
-      categories: []
-    };
-  }
-
   render() {
     return (
-      <AppContext.Provider value={this.state}>
+      <AppProvider>
         <BrowserRouter>
           <ContainerPage>
             <div className="App">
@@ -55,7 +39,7 @@ class App extends Component {
             </div>
           </ContainerPage>
         </BrowserRouter>
-      </AppContext.Provider>
+      </AppProvider>
     );
   }
 }

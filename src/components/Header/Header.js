@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../image/logo.png";
-// import HeaderTop from "./HeaderTop";
+import { AppContext } from "../../services/AppContext";
 class Header extends Component {
   unchecked() {
     let element = document.getElementById("toggler");
@@ -47,13 +47,18 @@ class Header extends Component {
             </Link>
           </div>
 
-          <div className="cart">
-            <Link to="/cart">
-              <button type="button">
-                <i className="fas fa-cart-arrow-down" />
-              </button>
-            </Link>
-          </div>
+          <AppContext.Consumer>
+            {({ cart }) => (
+              <div className="cart">
+                <Link to="/cart">
+                  <button type="button">
+                    <i className="fas fa-cart-arrow-down" />
+                  </button>
+                  <span style={{ color: "white" }}> {cart.length}</span>
+                </Link>
+              </div>
+            )}
+          </AppContext.Consumer>
         </div>
 
         {/* <HeaderTop /> */}
