@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import product2 from "../../image/product2.png";
 export default function CartItem({ item, value }) {
-  const { _id, name, img, price, total, count } = item;
-  // const { increment, decrement, removeItem } = value;
+  const { _id, name, img, order } = item;
+  const { increment, decrement, removeItem } = value;
 
-  console.log("item", item);
   return (
     <div className="row my-2 text-capitalize text-center d-flex align-items-center">
       <div className="col-10 mx-auto col-lg-2">
@@ -22,22 +21,21 @@ export default function CartItem({ item, value }) {
 
       <div className="col-10 mx-auto col-lg-2">
         <span className="d-lg-none">price:</span>
-        {price}
+        {order.size.price}
       </div>
 
       <div className="col-10 mx-auto col-lg-2 my-2 my-lg-0">
-        {/* <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
           <div>
-            <span className="btn btn-black mx-1" onClick={() => decrement(id)}>
+            {/* <span className="btn btn-black mx-1" onClick={() => decrement(_id)}>
               -
             </span>
-            <span className="btn btn-black mx-1">{count}</span>
-            <span className="btn btn-black mx-1" onClick={() => increment(id)}>
+            <span className="btn btn-black mx-1">{count}</span> */}
+            <span className="btn btn-black mx-1" onClick={() => increment(_id)}>
               +
             </span>
           </div>
-        </div> */}
-        tt
+        </div>
       </div>
 
       <div className="col-10 mx-auto col-lg-2">

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, Field, ErrorMessage, withFormik } from "formik";
 import * as yup from "yup";
 import "./Login.scss";
+import { Link } from "react-router-dom";
 class Login extends Component {
   render() {
     return (
@@ -33,7 +34,7 @@ class Login extends Component {
             Cancel
           </button>
           <span class="forgot">
-            Forgot <a href="#">password?</a>
+            Forgot <Link to="/">password?</Link>
           </span>
         </div>
       </Form>

@@ -20,9 +20,11 @@ p {
     display: flex;
     flex-direction: column;
     .selectSize,
-    .selectCrust,
-    .addtopping {
+    .selectCrust {
       display: flex;
+    }
+    .addtopping {
+      display: block;
     }
     .size,
     .crust,
@@ -39,34 +41,6 @@ p {
       text-transform: capitalize;
     }
   }
-  // .detail-right {
-  //   display: flex;
-  //   flex-direction: column;
-
-  //   .price {
-  //     font-weight: bold;
-  //     font-size: 1.5rem;
-  //     font-style: italic;
-  //     margin-bottom: 15px;
-  //   }
-  //   form {
-  //     display: flex;
-  //     .size {
-  //       display: flex;
-  //       align-items: baseline;
-  //       margin-right: 30px;
-  //     }
-  //   }
-  //   .select {
-  //     margin-bottom: 30px;
-  //     display: flex;
-  //     align-items: baseline;
-  //   }
-  //   .select > p {
-  //     margin-right: 30px;
-  //     margin-left: 5px;
-  //   }
-  // }
 }
 .error {
   color: red;

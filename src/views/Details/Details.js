@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Details.scss";
 import product1 from "../../image/product1.png";
 import Axios from "axios";
-import { Form, withFormik, ErrorMessage, Field } from "formik";
+import { Form, withFormik } from "formik";
 import * as yup from "yup";
 import { AppContext } from "../../services/AppContext";
 class Details extends Component {
@@ -10,7 +10,8 @@ class Details extends Component {
     super(props);
     this.state = {
       id: this.props.match.params.id,
-      details: {}
+      details: {},
+      toppings: []
     };
   }
   async componentDidMount() {
@@ -19,11 +20,27 @@ class Details extends Component {
         `http://pizza-products.herokuapp.com/pizzas/${this.state.id}`
       );
       this.setState({ details: data });
-      // console.log(this.state.details);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const { data } = await Axios.get(
+        `http://pizza-products.herokuapp.com/toppings`
+      );
+      this.setState({ toppings: data });
+      // console.log("topping", this.state.toppings);
     } catch (err) {
       console.log(err);
     }
   }
+
+  handleSizeChange = event => {
+    const value = event.target.value;
+    const sizeObj = this.state.details.variantProducts.find(
+      item => item.value === value
+    );
+    this.props.setFieldValue("size", sizeObj);
+  };
 
   render() {
     const {
@@ -52,13 +69,14 @@ class Details extends Component {
                 <div className="selectSize">
                   {/* select size */}
                   {variantProducts.map((variant, index) => {
+                    console.log(variant);
                     return (
                       <div className="size" key={index}>
                         {" "}
                         <input
                           type="radio"
                           name="size"
-                          onChange={this.props.handleChange}
+                          onChange={this.handleSizeChange}
                           value={variant.value}
                           id={variant.value}
                         />
@@ -72,6 +90,7 @@ class Details extends Component {
                 <div className="error">{this.props.errors.size}</div>
                 {/* select crust */}
                 <h4>select crust</h4>
+
                 <div className="selectCrust">
                   <div className="crust">
                     <input
@@ -81,7 +100,7 @@ class Details extends Component {
                       id="thin"
                       onChange={this.props.handleChange}
                     />{" "}
-                    <label for="thin">thin</label>
+                    <label htmlFor="thin">thin</label>
                   </div>
                   <div className="crust">
                     <input
@@ -91,7 +110,7 @@ class Details extends Component {
                       id="normal"
                       onChange={this.props.handleChange}
                     />{" "}
-                    <label for="normal">normal</label>
+                    <label htmlFor="normal">normal</label>
                   </div>
                   <div className="crust">
                     <input
@@ -101,47 +120,49 @@ class Details extends Component {
                       id="thick"
                       onChange={this.props.handleChange}
                     />{" "}
-                    <label for="thick">thick</label>
+                    <label htmlFor="thick">thick</label>
                   </div>
                 </div>
                 <div className="error">{this.props.errors.crust}</div>
                 {/* add topping */}
                 <h4>add topping</h4>
                 <div className="addtopping">
-                  <div className="topping">
-                    <input
-                      type="radio"
-                      name="addtopping"
-                      value="cheese"
-                      id="cheese"
-                      onChange={this.props.handleChange}
-                    />{" "}
-                    <label for="cheese">cheese</label>
-                  </div>
-
-                  <div className="topping">
-                    <input
-                      type="radio"
-                      name="addtopping"
-                      value="doublecheese"
-                      id="doublecheese"
-                      onChange={this.props.handleChange}
-                    />{" "}
-                    <label for="doublecheese">double cheese</label>
-                  </div>
+                  {this.state.toppings.map((topping, index) => {
+                    console.log(topping.name);
+                    return (
+                      <div className="topping" key={index}>
+                        <input
+                          type="checkbox"
+                          name={`toppings${index}`}
+                          value={topping.name}
+                          id={topping.name}
+                          onChange={this.props.handleChange}
+                        />{" "}
+                        <label for={topping.name}>{topping.name}</label>
+                      </div>
+                    );
+                  })}
                 </div>
-              </Form>
 
-              <AppContext.Consumer>
-                {value => (
-                  <button
-                    className="addtocart"
-                    onClick={this.props.handleSubmit}
-                  >
-                    add to cart
-                  </button>
-                )}
-              </AppContext.Consumer>
+                <AppContext.Consumer>
+                  {value => (
+                    <button
+                      type="submit"
+                      className="addtocart"
+                      onClick={() => {
+                        value.addToCart({
+                          ...this.state.details,
+                          order: this.props.values
+                        });
+                        console.log("details", this.state.details);
+                        console.log(this.props.values);
+                      }}
+                    >
+                      add to cart
+                    </button>
+                  )}
+                </AppContext.Consumer>
+              </Form>
             </div>
           </div>
         </div>
@@ -158,22 +179,25 @@ class Details extends Component {
 // });
 
 const FormikForm = withFormik({
-  mapPropsToValues() {
+  mapPropsToValues: () => {
     return {
       size: "",
-      price: "",
       crust: "",
-      addtopping: ""
+      toppings0: "",
+      toppings1: "",
+      toppings2: "",
+      toppings3: ""
     };
   },
+
   validationSchema: yup.object().shape({
     size: yup.string().required(),
     crust: yup.string().required()
   }),
-  handleSubmit: (values, { setSubmitting }) => {
+
+  handleSubmit: (values, { props, state }) => {
     console.log("1", values);
-    setTimeout(() => setSubmitting(false), 3 * 1000);
+    // console.log(state.details);
   }
-  // validationSchema: DetailsValidation
 })(Details);
 export default FormikForm;

@@ -18,6 +18,7 @@ class Product extends Component {
   render() {
     const { product } = this.props;
     const { _id, img, name, description, variantProducts } = product;
+    console.log(product);
     return (
       <div className="product col-12 col-md-6 col-lg-3 col-sm-12">
         <div className="card">

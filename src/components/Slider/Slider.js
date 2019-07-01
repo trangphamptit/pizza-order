@@ -1,7 +1,7 @@
 import React from "react";
 import { Slide } from "react-slideshow-image";
 import "./Slider.scss";
-import { isContainer } from "postcss-selector-parser";
+// import { isContainer } from "postcss-selector-parser";
 const slideImages = [
   "https://www.pizzahut.vn/menu/v000001/hk/tc/images/C18.png",
   "https://www.pizzahut.vn/menu/v000001/hk/tc/images/C18.png",
