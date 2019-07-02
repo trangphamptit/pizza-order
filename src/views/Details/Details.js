@@ -28,7 +28,6 @@ class Details extends Component {
         `http://pizza-products.herokuapp.com/toppings`
       );
       this.setState({ toppings: data });
-      // console.log("topping", this.state.toppings);
     } catch (err) {
       console.log(err);
     }
@@ -40,6 +39,19 @@ class Details extends Component {
       item => item.value === value
     );
     this.props.setFieldValue("size", sizeObj);
+  };
+
+  handleSelectTopping = event => {
+    const { value, checked } = event.target;
+    const topping = this.state.toppings.find(topping => topping._id === value);
+    let toppings = this.props.values.toppings;
+    if (checked) {
+      toppings.push(topping);
+    } else {
+      let index = toppings.indexOf(topping);
+      toppings.splice(index, 1);
+    }
+    console.log(this.props.values);
   };
 
   render() {
@@ -69,7 +81,6 @@ class Details extends Component {
                 <div className="selectSize">
                   {/* select size */}
                   {variantProducts.map((variant, index) => {
-                    console.log(variant);
                     return (
                       <div className="size" key={index}>
                         {" "}
@@ -80,7 +91,7 @@ class Details extends Component {
                           value={variant.value}
                           id={variant.value}
                         />
-                        <label for={variant.value}>
+                        <label htmlFor={variant.value}>
                           {variant.value}-{variant.price}
                         </label>
                       </div>
@@ -128,34 +139,60 @@ class Details extends Component {
                 <h4>add topping</h4>
                 <div className="addtopping">
                   {this.state.toppings.map((topping, index) => {
-                    console.log(topping.name);
                     return (
                       <div className="topping" key={index}>
                         <input
                           type="checkbox"
                           name={`toppings${index}`}
-                          value={topping.name}
-                          id={topping.name}
-                          onChange={this.props.handleChange}
+                          value={topping._id}
+                          onChange={this.handleSelectTopping}
                         />{" "}
-                        <label for={topping.name}>{topping.name}</label>
+                        <label htmlFor={topping._id}>{topping.name}</label>
                       </div>
                     );
                   })}
                 </div>
-
+                <h4>quantity</h4>
+                <div className="quantity">
+                  <div className="topping">
+                    <input
+                      type="number"
+                      min="1"
+                      max="10"
+                      name="quantity"
+                      onChange={this.props.handleChange}
+                    />{" "}
+                    <label htmlFor="quantity">quantity</label>
+                  </div>
+                </div>
                 <AppContext.Consumer>
                   {value => (
                     <button
                       type="submit"
                       className="addtocart"
                       onClick={() => {
-                        value.addToCart({
+                        let orderDetails = [];
+
+                        let {
+                          crust,
+                          size,
+                          toppings,
+                          quantity
+                        } = this.props.values;
+                        let toppingIDs = toppings.map(topping => topping._id);
+                        let productID = this.state.details._id;
+                        let note = { [productID]: toppingIDs };
+                        console.log("note", note);
+                        orderDetails.push({
                           ...this.state.details,
-                          order: this.props.values
+                          crust,
+                          size,
+                          quantity
                         });
-                        console.log("details", this.state.details);
-                        console.log(this.props.values);
+                        toppings.forEach(topping => {
+                          orderDetails.push(topping);
+                        });
+                        value.addToCart(orderDetails);
                       }}
                     >
                       add to cart
@@ -183,21 +220,19 @@ const FormikForm = withFormik({
     return {
       size: "",
       crust: "",
-      toppings0: "",
-      toppings1: "",
-      toppings2: "",
-      toppings3: ""
+      toppings: [],
+      quantity: 0
     };
   },
 
   validationSchema: yup.object().shape({
     size: yup.string().required(),
-    crust: yup.string().required()
+    crust: yup.string().required(),
+    quantity: yup.number().required()
   }),
 
   handleSubmit: (values, { props, state }) => {
-    console.log("1", values);
-    // console.log(state.details);
+    console.log("values", values);
   }
 })(Details);
 export default FormikForm;

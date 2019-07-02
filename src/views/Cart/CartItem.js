@@ -1,39 +1,39 @@
-import React, { Component } from "react";
-import product2 from "../../image/product2.png";
+import React from "react";
+
 export default function CartItem({ item, value }) {
-  const { _id, name, img, order } = item;
-  const { increment, decrement, removeItem } = value;
+  // const { increment, decrement, removeItem, count } = value;
+  console.log("item", item);
+  // console.log("value", value);
 
   return (
     <div className="row my-2 text-capitalize text-center d-flex align-items-center">
       <div className="col-10 mx-auto col-lg-2">
-        <img
-          src={img ? img : product2}
-          style={{ width: "5rem", height: "5rem" }}
-          className="img-fluid"
-          alt="product"
-        />
+        <span className="d-lg-none">name:</span>
+        {item.name}
       </div>
       <div className="col-10 mx-auto col-lg-2">
-        <span className="d-lg-none">product:</span>
-        {name}
+        <span className="d-lg-none">size:</span>
+        {item.size && item.size.value}
       </div>
 
       <div className="col-10 mx-auto col-lg-2">
         <span className="d-lg-none">price:</span>
-        {order.size.price}
+        {item.size && item.size.price}
       </div>
-
+      <div className="col-10 mx-auto col-lg-2">
+        <span className="d-lg-none">count:</span>
+        {item.quantity}
+      </div>
       <div className="col-10 mx-auto col-lg-2 my-2 my-lg-0">
         <div className="d-flex justify-content-center">
           <div>
             {/* <span className="btn btn-black mx-1" onClick={() => decrement(_id)}>
               -
-            </span>
-            <span className="btn btn-black mx-1">{count}</span> */}
-            <span className="btn btn-black mx-1" onClick={() => increment(_id)}>
+  </span>*/}
+            <span className="btn btn-black mx-1" />
+            {/* <span className="btn btn-black mx-1" onClick={() => increment(_id)}>
               +
-            </span>
+            </span> */}
           </div>
         </div>
       </div>
@@ -42,11 +42,10 @@ export default function CartItem({ item, value }) {
         {/* <div className="cart-icon" onClick={() => removeItem(id)}>
           <i className="fas fa-trash" />
         </div> */}
-        tt
       </div>
 
       <div className="col-10 mx-auto col-lg-2">
-        {/* <strong> {total}đ</strong> */}
+        <strong> {item.quantity * item.price}$</strong>
         tt
       </div>
     </div>

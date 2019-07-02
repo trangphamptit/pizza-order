@@ -12,7 +12,6 @@ class AppProvider extends Component {
       cart: [],
       cartSubTotal: 0,
       cartTotal: 0,
-      count: 0,
       total: 0,
       getProducts: async () => {
         const products = await getProducts();
@@ -26,44 +25,46 @@ class AppProvider extends Component {
   }
 
   addToCart = product => {
-    console.log("product", product);
-    this.setState({ cart: this.state.cart.concat(product) });
-  };
-
-  addTotals = () => {
-    let subTotal = 0;
-    this.state.cart.map(item => (subTotal += item.total));
-
-    const total = subTotal + 30;
-    this.setState(() => {
-      return {
-        cartSubTotal: subTotal,
-        cartTotal: total
-      };
+    this.setState({
+      cart: this.state.cart.concat(product)
     });
+    console.log("cart", this.state.cart);
   };
-  increment = _id => {
-    let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(item => item._id === _id);
-    const index = tempCart.indexOf(selectedProduct);
-    const product = tempCart[index];
-    console.log("hi", product);
-    let count = 0;
-    let total = 0;
-    // product.count = product.length + 1;
-    // product.total = product.count * product.price;
-    // this.setState(
-    //   () => {
-    //     return {
-    //       count: product.length + 1,
-    //       total: product.count * product.price
-    //     };
-    //   },
-    //   () => {
-    //     this.addTotals();
-    //   }
-    // );
-  };
+
+  // addTotals = () => {
+  //   let subTotal = 0;
+  //   this.state.cart.map(item => (subTotal += item.total));
+
+  //   const total = subTotal + 30;
+  //   this.setState(() => {
+  //     return {
+  //       cartSubTotal: subTotal,
+  //       cartTotal: total
+  //     };
+  //   });
+  // };
+  // increment = _id => {
+  //   let tempCart = [...this.state.cart];
+  //   const selectedProduct = tempCart.find(item => item._id === _id);
+  //   const index = tempCart.indexOf(selectedProduct);
+  //   const product = tempCart[index];
+  //   console.log("hi", product);
+  //   let count = 0;
+  //   let total = 0;
+  // product.count = product.length + 1;
+  // product.total = product.count * product.price;
+  // this.setState(
+  //   () => {
+  //     return {
+  //       count: product.length + 1,
+  //       total: product.count * product.price
+  //     };
+  //   },
+  //   () => {
+  //     this.addTotals();
+  //   }
+  // );
+  // };
 
   // decrement = _id => {
   //   let tempCart = [...this.state.cart];

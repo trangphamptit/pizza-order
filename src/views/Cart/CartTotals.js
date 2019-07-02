@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import BillForm from "../BillForm";
+// import BillForm from "../BillForm";
 export default class CartTotals extends Component {
   constructor(props) {
     super(props);

@@ -15,13 +15,15 @@ export default class Cart extends Component {
     });
     return _total;
   }
+
   render() {
     return (
       <section>
         <AppContext.Consumer>
           {value => {
-            const { cart } = value;
+            const { cart, count } = value;
             console.log("cart", cart);
+            console.log("count", count);
             if (cart.length > 0) {
               const total = this.getTotal(cart);
               return (

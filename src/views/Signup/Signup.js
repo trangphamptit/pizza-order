@@ -1,56 +1,70 @@
 import React, { Component } from "react";
-import { Form, Field, ErrorMessage, withFormik } from "formik";
+import { Form, ErrorMessage, withFormik } from "formik";
 import * as yup from "yup";
 import "./Signup.scss";
 class Signup extends Component {
   render() {
     return (
-      <Form className="signupform col-12 col-md-8 col-lg-8 col-sm-12">
+      <Form
+        className="signupform col-12 col-md-8 col-lg-8 col-sm-12"
+        onSubmit={this.props.handleSubmit}
+      >
         <h1 className="signup-title">SIGN UP </h1>
-        <Field type="text" name="name" placeholder="your full name" />
+        <input
+          type="text"
+          name="name"
+          placeholder="your full name"
+          onChange={this.props.handleChange}
+        />
         <div className="error">
           <ErrorMessage name="name" />
         </div>
-        <Field type="email" name="email" placeholder=" your email" />
+        <input
+          type="email"
+          name="email"
+          placeholder=" your email"
+          onChange={this.props.handleChange}
+        />
         <div className="error">
           <ErrorMessage name="email" />
         </div>
-        <Field type="date" name="birthday" placeholder="your birthday" />
-        <div className="error">
-          <ErrorMessage name="birthday" />
-        </div>
-        <Field type="number" name="phone" placeholder="your phone number" />
+
+        <input
+          type="number"
+          name="phone"
+          placeholder="your phone number"
+          onChange={this.props.handleChange}
+        />
         <div className="error">
           <ErrorMessage name="phone" />
         </div>
 
-        <Field
+        <input
           type="password"
           name="password"
           placeholder="your password(min 6 characters)"
+          onChange={this.props.handleChange}
         />
         <div className="error">
           <ErrorMessage name="password" />
         </div>
-        <Field
+        <input
           type="password"
-          name="password"
+          name="passwordconfirm"
           placeholder="repeat your password"
+          onChange={this.props.handleChange}
         />
         <div className="error">
-          <ErrorMessage name="password" />
+          <ErrorMessage name="passwordconfirm" />
         </div>
-        <button type="submit" onClick={this.handleSubmit}>
+        <button type="submit" onClick={this.props.handleSubmit}>
           {" "}
           Submit{" "}
         </button>
-        <div className="login-footer">
-          <button type="button" className="cancelbtn">
+        <div className="signup-footer">
+          <button type="submit" className="cancelbtn">
             Cancel
           </button>
-          <span class="forgot">
-            Forgot <a href="#">password?</a>
-          </span>
         </div>
       </Form>
     );
@@ -63,19 +77,30 @@ const SignupValidation = yup.object().shape({
     .string()
     .email("invalid email")
     .required(),
-  birthday: yup.string().required(),
-  phone: yup.string().required(),
+  phone: yup.number().required(),
   password: yup
     .string()
-    .min(8)
+    .min(6)
     .max(16)
-    .required()
+    .required(),
+
+  passwordconfirm: yup.string().oneOf([yup.ref("password"), null])
 });
 
 const FormikForm = withFormik({
+  mapPropsToValues: () => {
+    return {
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
+      passwordconfirm: ""
+    };
+  },
+
   handleSubmit: (values, { setSubmitting }) => {
-    console.log("Submitted username:", values.username);
-    console.log("Submitted Password:", values.password);
+    console.log("Submitted username:", values);
+
     // Simulates the delay of a real request
     setTimeout(() => setSubmitting(false), 3 * 1000);
   },

@@ -8,7 +8,7 @@ class Products extends Component {
       <div className="bestseller">
         <div className="products-banner">
           <div className="row">
-            <img className="banner-img col-12" src={pizza1} />
+            <img className="banner-img col-12" alt="pizza" src={pizza1} />
           </div>
         </div>
         <div className="row">
