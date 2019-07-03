@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Form, ErrorMessage, withFormik } from "formik";
 import * as yup from "yup";
 import "./Signup.scss";
+import { apiLinks } from "../../services/APILinks";
+import axios from "axios";
 class Signup extends Component {
   render() {
     return (
@@ -30,7 +32,7 @@ class Signup extends Component {
         </div>
 
         <input
-          type="number"
+          type="text"
           name="phone"
           placeholder="your phone number"
           onChange={this.props.handleChange}
@@ -77,7 +79,7 @@ const SignupValidation = yup.object().shape({
     .string()
     .email("invalid email")
     .required(),
-  phone: yup.number().required(),
+  phone: yup.string().required(),
   password: yup
     .string()
     .min(6)
@@ -99,8 +101,25 @@ const FormikForm = withFormik({
   },
 
   handleSubmit: (values, { setSubmitting }) => {
-    console.log("Submitted username:", values);
+    // console.log("Submitted username:", values);
 
+    let signupLink = apiLinks.signup;
+
+    axios
+      .post(signupLink, {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        password: values.password,
+        dob: "1/1/2019"
+      })
+      .then(function(response) {
+        console.log(response);
+        console.log("Authenticated");
+      })
+      .catch(function(error) {
+        console.log("Error on Authentication");
+      });
     // Simulates the delay of a real request
     setTimeout(() => setSubmitting(false), 3 * 1000);
   },

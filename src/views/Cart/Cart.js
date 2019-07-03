@@ -9,9 +9,14 @@ export default class Cart extends Component {
   getTotal(cart) {
     let _total = 0;
     cart.map(item => {
-      if (item.order && item.order.size && item.order.size.price) {
-        _total += item.order.size.price;
+      if (item.size) {
+        _total += item.size.price * item.quantity;
+      } else {
+        _total += item.price;
       }
+      // if (item.size && item.size.price && item.order.size.price) {
+      //   _total += item.order.size.price;
+      // }
     });
     return _total;
   }
@@ -28,11 +33,14 @@ export default class Cart extends Component {
               const total = this.getTotal(cart);
               return (
                 <React.Fragment>
-                  <Title name="Giỏ hàng của bạn" />
-                  Total: {total}
+                  <Title name="your cart" />
                   <CartColumns />
                   <CartList value={cart} />
-                  {/* <CartTotals value={value} history={this.props.history} /> */}
+                  <CartTotals
+                    value={value}
+                    total={total}
+                    history={this.props.history}
+                  />
                 </React.Fragment>
               );
             } else {

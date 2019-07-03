@@ -14,6 +14,9 @@ import Cart from "./views/Cart/Cart";
 import BillForm from "./views/BillForm.js";
 import Login from "./views/Login/Login";
 import Signup from "./views/Signup/Signup";
+import Delivery from "./views/Delivery/Delivery";
+import ChoosePayment from "./views/Payment/ChoosePayment";
+import VisaForm from "./views/Payment/VisaForm";
 import AppProvider from "./services/AppContext";
 class App extends Component {
   render() {
@@ -35,6 +38,9 @@ class App extends Component {
                 <Route path="/billform" component={BillForm} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
+                <Route path="/delivery" component={Delivery} />
+                <Route path="/choosepayment" component={ChoosePayment} />
+                <Route path="/visaform" component={VisaForm} />
               </Switch>
             </div>
           </ContainerPage>

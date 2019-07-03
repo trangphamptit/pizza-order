@@ -5,7 +5,7 @@ export default function CartList({ value }) {
   return (
     <div className="container-fluid">
       {value.map((item, index) => {
-        console.log("item", item);
+        // console.log("item", item);
         return <CartItem key={index} item={item} value={value} />;
       })}
     </div>

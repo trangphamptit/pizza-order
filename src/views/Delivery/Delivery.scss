@@ -1,0 +1,18 @@
+.deliveryform {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 16px;
+}
+.delivery-title {
+  text-align: center;
+}
+select,
+input[type="time"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}

@@ -32,14 +32,7 @@ class Product extends Component {
             </Link>
             <Link to={`/details/${_id}`}>
               <button className="cart-btn">
-                {/* {this.state.inCart ? (
-                <p className="text-capitalize mb-0" disabled>
-                  {" "}
-                  in Cart
-                </p>
-              ) : ( */}
                 <i className="fas fa-cart-plus" />
-                {/* )}{" "} */}
               </button>
             </Link>
           </div>

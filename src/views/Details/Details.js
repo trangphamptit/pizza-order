@@ -179,6 +179,9 @@ class Details extends Component {
                           toppings,
                           quantity
                         } = this.props.values;
+                        toppings.forEach(
+                          topping => (topping.quantity = quantity)
+                        );
                         let toppingIDs = toppings.map(topping => topping._id);
                         let productID = this.state.details._id;
                         let note = { [productID]: toppingIDs };
