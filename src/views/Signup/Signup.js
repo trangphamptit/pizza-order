@@ -116,8 +116,11 @@ const FormikForm = withFormik({
         dob: "1/1/2019"
       })
       .then(function(response) {
-        console.log(response);
-        console.log("Authenticated");
+        // console.log(response);
+        if (response.data && response.data.email) {
+          this.props.history.goBack();
+          console.log("Authenticated");
+        }
       })
       .catch(function(error) {
         console.log("Error on Authentication");

@@ -2,6 +2,7 @@
   text-align: center;
   margin: auto;
   color: white;
+
   // border: 1px solid gray;
 }
 .tab-list {
@@ -26,12 +27,23 @@
   height: 400px;
   background-color: var(--mainGray);
   padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  .user-img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  h4 {
+  }
+  label {
+    width: 100%;
+    height: auto;
+    background-color: black;
+    padding: 5px 0px;
+    margin: 5px 0px 15px;
+  }
 }
 .tabs {
   margin-bottom: 15px;
-}
-.user-img {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
 }
