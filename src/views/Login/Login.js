@@ -41,7 +41,7 @@ class Login extends Component {
 
         <button type="submit" onClick={this.props.handleSubmit}>
           {" "}
-          Submit{" "}
+          Login{" "}
         </button>
 
         <div className="login-footer">
@@ -70,7 +70,7 @@ const LoginValidation = yup.object().shape({
 });
 
 const FormikForm = withFormik({
-  handleSubmit: (values, { setSubmitting }) => {
+  handleSubmit: (values, { props, setSubmitting }) => {
     // console.log("Submitted username:", values.username);
     // console.log("Submitted Password:", values.password);
 
@@ -79,12 +79,18 @@ const FormikForm = withFormik({
     axios
       .post(loginLink, { email, password })
       .then(function(response) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-        console.log(response);
+        if (response.data && response.data.email) {
+          console.log(response.data);
+          localStorage.setItem("user", JSON.stringify(response.data));
+          props.history.push("/delivery");
+        } else {
+          alert("email or password is wrong");
+        }
       })
       .catch(function(error) {
         console.log(error);
       });
+
     // Simulates the delay of a real request
     setTimeout(() => setSubmitting(false), 3 * 1000);
   },

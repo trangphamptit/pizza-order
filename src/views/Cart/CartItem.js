@@ -1,46 +1,50 @@
 import React from "react";
-
+import { AppContext } from "../../services/AppContext";
 export default function CartItem({ item, value }) {
-  // const { increment, decrement, removeItem, count } = value;
-  console.log("item", item);
+  const { removeItem } = value;
 
   return (
-    <div className="row my-2 text-capitalize text-center d-flex align-items-center">
-      <div className="col-10 mx-auto col-lg-2">
-        <span className="d-lg-none">name:</span>
-        {item.name}
-      </div>
-      <div className="col-10 mx-auto col-lg-2">
-        <span className="d-lg-none">size:</span>
-        {item.size && item.size.value}
-      </div>
-
-      <div className="col-10 mx-auto col-lg-2">
-        <span className="d-lg-none">price:</span>
-        {item.size && item.size.price}
-      </div>
-      <div className="col-10 mx-auto col-lg-2">
-        <span className="d-lg-none">count:</span>
-        {item.quantity && item.quantity}
-      </div>
-
-      <div className="col-10 mx-auto col-lg-2">
-        <div
-          className="cart-icon"
-          // onClick={() => removeItem(item._id)}
-        >
-          <i className="fas fa-trash" />
+    <div className="col-12 my-2 text-capitalize text-center">
+      <div className="row">
+        <div className="mx-auto col-lg-2 col-xl-2 col-md-2 col-sm-2">
+          <span className="d-lg-none"> {item.name}</span>
         </div>
-      </div>
+        <div className="mx-auto col-lg-2 col-xl-2 col-md-2 col-sm-2">
+          <span className="d-lg-none"> {item.size && item.size.value}</span>
+        </div>
 
-      <div className="col-10 mx-auto col-lg-2">
-        <strong>
-          {" "}
-          {item.size
-            ? item.quantity * item.size.price
-            : item.quantity * item.price}
-          $
-        </strong>
+        <div className="mx-auto col-lg-2 col-xl-2 col-md-2 col-sm-2">
+          <span className="d-lg-none">
+            {" "}
+            {item.size ? item.size.price : item.price}
+          </span>
+        </div>
+        <div className="mx-auto col-lg-2 col-xl-2 col-md-2 col-sm-2">
+          <span className="d-lg-none"> {item.quantity && item.quantity}</span>
+        </div>
+
+        <div className="mx-auto col-lg-2 col-xl-2 col-md-2 col-sm-2">
+          <AppContext.Consumer>
+            {value => (
+              <div
+                className="cart-icon"
+                onClick={() => value.removeItem(item._id)}
+              >
+                <i className="fas fa-trash" style={{ color: "yellow" }} />
+              </div>
+            )}
+          </AppContext.Consumer>
+        </div>
+
+        <div className="mx-auto col-lg-2 col-xl-2 col-md-2 col-sm-2">
+          <span>
+            {" "}
+            {item.size
+              ? item.quantity * item.size.price
+              : item.quantity * item.price}
+            vnđ
+          </span>
+        </div>
       </div>
     </div>
   );

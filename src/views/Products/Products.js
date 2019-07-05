@@ -9,6 +9,7 @@ class Products extends Component {
 
   render() {
     const { products } = this.context;
+    // console.log(products);
     return (
       <div className="products">
         <div className="row">

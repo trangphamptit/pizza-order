@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Product.scss";
+import "./BestSellerProduct.scss";
 import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
 class Product extends Component {
@@ -16,10 +16,9 @@ class Product extends Component {
   }
 
   render() {
-    const { product } = this.props;
-    // console.log(product);
-    const { _id, img, name, description, variantProducts } = product;
-    // console.log(product._id);
+    const { bestseller } = this.props;
+    console.log(bestseller);
+    const { _id, img, name, description, variantProducts } = bestseller;
     return (
       <div className="product col-xl-3 col-lg-3 col-md-3 col-sm-12">
         <div className="card ">

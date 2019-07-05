@@ -8,7 +8,7 @@ class Signup extends Component {
   render() {
     return (
       <Form
-        className="signupform col-12 col-md-8 col-lg-8 col-sm-12"
+        className="signupform col-xl-8 col-md-8 col-lg-8 col-sm-12"
         onSubmit={this.props.handleSubmit}
       >
         <h1 className="signup-title">SIGN UP </h1>
@@ -59,11 +59,13 @@ class Signup extends Component {
         <div className="error">
           <ErrorMessage name="passwordconfirm" />
         </div>
-        <button type="submit" onClick={this.props.handleSubmit}>
-          {" "}
-          Submit{" "}
-        </button>
+
         <div className="signup-footer">
+          <button type="submit" onClick={this.props.handleSubmit}>
+            {" "}
+            Submit{" "}
+          </button>
+
           <button type="submit" className="cancelbtn">
             Cancel
           </button>

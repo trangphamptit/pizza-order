@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import product2 from "../../image/product2.png";
+import product3 from "../../image/product3.png";
 import "./Category.scss";
 import AppContext from "../../services/AppContext";
+import { Link } from "react-router-dom";
 class Category extends Component {
   render() {
     const { category } = this.props;
     const { _id, name, description, img } = category;
     return (
-      <div className=" col-12 col-md-6 col-sm-12 col-lg-3">
+      <div className="category col-xl-6 col-lg-6 col-md-6 col-sm-6">
         <div className="categoryitem">
-          <img src={img ? img : product2} className="category-image" />
+          <Link to={`/details/${_id}`}>
+            <img src={img ? img : product3} className="category-image" />
+          </Link>
           <label className="category-title">{name}</label>
         </div>
       </div>

@@ -19,8 +19,8 @@ class BillForm extends Component {
     const getLocal = this.getFromLocal();
   }
   createOrder = () => {
-    const { cart } = this.context;
-    // console.log(cart);
+    const { cart, clearCart } = this.context;
+    console.log("cart", cart);
     let orders = cart.map(item => {
       let orderDetail = { productID: item._id, quantity: item.quantity };
       if (item.size) {
@@ -44,23 +44,34 @@ class BillForm extends Component {
         orderDetails: orders
       })
       .then(function(response) {
-        console.log(response);
-        console.log("Authenticated");
+        console.log(response.data.message);
+        if (response.data && response.data.message) {
+          clearCart();
+          alert("Your order is successful. Thank you!");
+        } else {
+          alert("Can't create order. Please try again");
+        }
       })
       .catch(function(error) {
-        console.log("Error on Authentication");
+        console.log("Error");
       });
   };
   render() {
     return (
       <AppContext.Consumer>
         {value => {
+          const { cart, getTotal } = value;
+          let total;
+          if (cart.length > 0) {
+            total = value.getTotal(cart);
+          }
+
+          // console.log("values", value.getTotal);
           return (
             <div className="container">
               <div className="card">
                 <div className="card-header text-capitalize">
-                  Bill:
-                  <strong>1/1/2019</strong>
+                  Bill
                   <span className="float-right">
                     {" "}
                     <strong>Status:</strong>Shipping
@@ -140,21 +151,21 @@ class BillForm extends Component {
                             <td className="left">
                               <strong>Total</strong>
                             </td>
-                            <td className="right">{this.props.total}</td>
+                            <td className="right">{total}</td>
                           </tr>
 
                           <tr>
                             <td className="left">
                               <strong>Shipping fee</strong>
                             </td>
-                            <td className="right">1$</td>
+                            <td className="right">30.000vnđ</td>
                           </tr>
                           <tr>
                             <td className="left">
                               <strong>Bill</strong>
                             </td>
                             <td className="right">
-                              <strong>{this.props.total + 1}</strong>
+                              <strong>{total + 30000}vnđ</strong>
                             </td>
                           </tr>
                         </tbody>

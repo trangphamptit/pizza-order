@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getProducts } from "./products";
 import { getCategories } from "./categories";
-
+import { getBestsellers } from "./bestseller";
 export const AppContext = React.createContext();
 class AppProvider extends Component {
   constructor(props) {
@@ -9,10 +9,12 @@ class AppProvider extends Component {
     this.state = {
       products: [],
       categories: [],
+      bestsellers: [],
       cart: [],
-      cartSubTotal: 0,
-      cartTotal: 0,
-      total: 0,
+      // cartSubTotal: 0,
+      // cartTotal: 0,
+      // total: 0,
+
       getProducts: async () => {
         const products = await getProducts();
         this.setState({ products });
@@ -20,6 +22,10 @@ class AppProvider extends Component {
       getCategories: async () => {
         const categories = await getCategories();
         this.setState({ categories });
+      },
+      getBestsellers: async () => {
+        const bestsellers = await getBestsellers();
+        this.setState({ bestsellers });
       }
     };
   }
@@ -29,6 +35,26 @@ class AppProvider extends Component {
       cart: this.state.cart.concat(product)
     });
     console.log("cart", this.state.cart);
+  };
+  getTotal = cart => {
+    let _total = 0;
+    cart.map(item => {
+      if (item.size) {
+        _total += item.size.price * item.quantity;
+      } else {
+        _total += item.price * item.quantity;
+      }
+    });
+    return _total;
+  };
+
+  clearCart = () => {
+    this.setState({ cart: [] });
+  };
+  removeItem = _id => {
+    let tempCart = this.state.cart.filter(item => item._id !== _id);
+    this.setState({ cart: tempCart });
+    console.log("hello");
   };
 
   // addTotals = () => {
@@ -87,41 +113,26 @@ class AppProvider extends Component {
   //   }
   // };
 
-  removeItem = _id => {
-    // let tempProducts = [...this.state.products];
-    // let tempCart = [...this.state.cart];
-    // tempCart = tempCart.filter(item => item.id !== id);
-    // const index = tempProducts.indexOf(this.getItem(id));
-    // let removedProduct = tempProducts[index];
-    // removedProduct.inCart = false;
-    // removedProduct.count = 0;
-    // removedProduct.total = 0;
-    // this.setState(
-    //   () => {
-    //     return {
-    //       cart: [...tempCart],
-    //       products: [...tempProducts]
-    //     };
-    //   },
-    //   () => {
-    //     this.addTotals();
-    //   }
-    // );
-  };
+  // let tempProducts = [...this.state.products];
+  // let tempCart = [...this.state.cart];
+  // tempCart = tempCart.filter(item => item.id !== id);
+  // const index = tempProducts.indexOf(this.getItem(id));
+  // let removedProduct = tempProducts[index];
+  // removedProduct.inCart = false;
+  // removedProduct.count = 0;
+  // removedProduct.total = 0;
+  // this.setState(
+  //   () => {
+  //     return {
+  //       cart: [...tempCart],
+  //       products: [...tempProducts]
+  //     };
+  //   },
+  //   () => {
+  //     this.addTotals();
+  //   }
+  // );
 
-  // clearCart = () => {
-  //   console.log("clear");
-  //   this.setState(
-  //     () => {
-  //       console.log("clear");
-  //       return { cart: [] };
-  //     },
-  //     () => {
-  //       this.setProducts();
-  //       this.addTotals();
-  //     }
-  //   );
-  // };
   // openModal=(id)=> {
   //   const product = this.getItem(id);
   //   this.setState(() => {
@@ -135,7 +146,9 @@ class AppProvider extends Component {
         value={{
           ...this.state,
           addToCart: this.addToCart,
-          increment: this.increment
+          getTotal: this.getTotal,
+          clearCart: this.clearCart,
+          removeItem: this.removeItem
         }}
       >
         {this.props.children}

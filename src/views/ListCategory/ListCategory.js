@@ -9,14 +9,12 @@ class ListCategory extends Component {
 
   render() {
     const { categories } = this.context;
-
+    console.log(categories);
     return (
-      <div className="listcategory">
-        <div className="row">
-          {categories.map(category => (
-            <Category key={category.id} category={category} />
-          ))}
-        </div>
+      <div className="listcategory row">
+        {categories.map(category => (
+          <Category key={category.id} category={category} />
+        ))}
       </div>
     );
   }

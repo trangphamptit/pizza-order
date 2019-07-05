@@ -4,46 +4,72 @@ import Slider from "../../components/Slider/Slider";
 
 import { Link } from "react-router-dom";
 import ListCategory from "../ListCategory/ListCategory";
-import BestSeller from "../BestSeller/BestSeller";
+import BestSellerProduct from "../BestSeller/BestSellerProduct";
 import Product from "../../components/Product/Product";
+import BestSeller from "../BestSeller/BestSeller";
+
 import { AppContext } from "../../services/AppContext";
 class Home extends Component {
   componentDidMount() {
     this.context.getProducts();
+    this.context.getBestsellers();
   }
 
   render() {
     const { products } = this.context;
-
+    // console.log(products);
+    // console.log(bestsellers);
     return (
-      <div className="home">
-        <Slider />
-        <h1>
-          <Link to="/bestseller">bestseller >></Link>
-        </h1>
-        <div className="row">
+      <div className="home col-12">
+        {/* <Slider /> */}
+        <div className="title-nav">
+          <h1>bestseller</h1>
+
+          <Link to="/bestseller">
+            {" "}
+            <span>view more >> </span>
+          </Link>
+        </div>
+
+        <div className="bestseller row">
           <AppContext.Consumer>
             {value => {
-              let homeProducts = value.products.slice(0, 4);
-              return homeProducts.map(product => (
-                <Product key={product._id} product={product} />
+              let homeBestsellers = value.bestsellers.slice(0, 4);
+              return homeBestsellers.map(bestseller => (
+                <BestSellerProduct
+                  key={bestseller._id}
+                  bestseller={bestseller}
+                />
               ));
             }}
           </AppContext.Consumer>
+          {/* <BestSeller /> */}
         </div>
 
-        <h1>
-          <Link to="/listcategory">category >></Link>
-        </h1>
+        <div className="title-nav">
+          <h1>categories</h1>
+
+          <Link to="/listcategory">
+            {" "}
+            <span>view more >> </span>
+          </Link>
+        </div>
         <ListCategory />
-        <h1>
-          <Link to="/products">products >></Link>
-        </h1>
+
+        <div className="title-nav">
+          <h1>products</h1>
+
+          <Link to="/products">
+            {" "}
+            <span>view more >> </span>
+          </Link>
+        </div>
+
         <div className="row">
           <AppContext.Consumer>
             {value => {
               let homeProducts = value.products.slice(0, 4);
-              console.log("home products", homeProducts);
+
               return homeProducts.map(product => (
                 <Product key={product._id} product={product} />
               ));

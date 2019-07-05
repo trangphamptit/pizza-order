@@ -1,9 +1,15 @@
 import "./BestSeller.scss";
 import React, { Component } from "react";
-import Product from "../../components/Product/Product";
+import BestSellerProduct from "./BestSellerProduct";
 import pizza1 from "../../image/pizza1.jpg";
-class Products extends Component {
+import { AppContext } from "../../services/AppContext";
+class BestSeller extends Component {
+  componentDidMount() {
+    this.context.getBestsellers();
+  }
   render() {
+    const { bestsellers } = this.context;
+    console.log(this.context);
     return (
       <div className="bestseller">
         <div className="products-banner">
@@ -12,14 +18,13 @@ class Products extends Component {
           </div>
         </div>
         <div className="row">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          {bestsellers.map((bestseller, index) => (
+            <BestSellerProduct key={index} bestseller={bestseller} />
+          ))}
         </div>
       </div>
     );
   }
 }
-
-export default Products;
+BestSeller.contextType = AppContext;
+export default BestSeller;

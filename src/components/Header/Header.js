@@ -2,48 +2,60 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../image/logo.png";
+import avatar from "../../image/avatar.png";
 import { AppContext } from "../../services/AppContext";
 class Header extends Component {
   unchecked() {
     let element = document.getElementById("toggler");
-    console.log(element.checked);
+    // console.log(element.checked);
     if (element.checked) {
       element.checked = false;
     }
-    console.log(element);
   }
 
   render() {
     return (
-      <div className="header">
-        <div className="header-container">
-          <div className="menu-wrap">
-            <input type="checkbox" id="toggler" />
-            <div className="hamburger">
-              <div />
-            </div>
-            <div className="menu" onClick={this.unchecked}>
+      <div className="header-container col-12">
+        <div className="menu-wrap">
+          <input type="checkbox" id="toggler" />
+          <div className="hamburger">
+            <div />
+          </div>
+          <div className="menu" onClick={this.unchecked}>
+            <div>
               <div>
-                <div>
-                  <ul>
-                    <li>
-                      <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                      <Link to="/listcategory">Category</Link>
-                    </li>
-                    <li>
-                      <Link to="/userprofile">Profile</Link>
-                    </li>
-                  </ul>
-                </div>
+                <ul>
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/listcategory">Category</Link>
+                  </li>
+                  <li>
+                    <Link to="/userprofile">Profile</Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="logo">
-            <Link to="/">
-              <img src={logo} />
+        <div className="logo">
+          <Link to="/">
+            <img src={logo} />
+          </Link>
+        </div>
+        <div className="header-right">
+          <div className="user">
+            <i class="fas fa-user-circle" />
+            <Link to="/login">
+              {" "}
+              <span className="login-header">login </span>
+            </Link>{" "}
+            /{" "}
+            <Link to="/signup">
+              {" "}
+              <span className="signup-header">signup </span>
             </Link>
           </div>
 
@@ -51,17 +63,14 @@ class Header extends Component {
             {({ cart }) => (
               <div className="cart">
                 <Link to="/cart">
-                  <button type="button">
-                    <i className="fas fa-cart-arrow-down" />
-                  </button>
-                  <span style={{ color: "white" }}> {cart.length}</span>
+                  <i className="fas fa-cart-arrow-down" />
+
+                  <span className="number-item"> {cart.length}</span>
                 </Link>
               </div>
             )}
           </AppContext.Consumer>
         </div>
-
-        {/* <HeaderTop /> */}
       </div>
     );
   }

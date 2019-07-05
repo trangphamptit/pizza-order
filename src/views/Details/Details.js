@@ -65,15 +65,17 @@ class Details extends Component {
     } = this.state.details;
     if (_id) {
       return (
-        <div className="detailpage container-fluid">
+        <div className="detailpage col-12">
           <div className="row">
-            <div className="detail-left col-12 col-sm-12 col-md-6 col-lg-6">
+            <div className="detail-left col-sm-12 col-md-6 col-lg-6 col-xl-6">
               <h1 className="name">{name}</h1>
               <p className="description">{description}</p>
-              <img src={product1} alt="" className="image" />
+              <div className="image">
+                <img src={product1} alt="" className="image" />
+              </div>
             </div>
 
-            <div className="detail-right col-12 col-sm-12 col-md-6 col-lg-6">
+            <div className="detail-right col-sm-12 col-md-6 col-lg-6 col-xl-6">
               <span className="price">{price} ₫</span>
 
               <Form className="select" onSubmit={this.props.handleSubmit}>
@@ -161,8 +163,7 @@ class Details extends Component {
                       max="10"
                       name="quantity"
                       onChange={this.props.handleChange}
-                    />{" "}
-                    <label htmlFor="quantity">quantity</label>
+                    />
                   </div>
                 </div>
                 <AppContext.Consumer>
@@ -222,9 +223,9 @@ const FormikForm = withFormik({
   mapPropsToValues: () => {
     return {
       size: "",
-      crust: "",
+      crust: "normal",
       toppings: [],
-      quantity: 0
+      quantity: 1
     };
   },
 

@@ -1,20 +1,18 @@
-footer {
-  padding-left: 15px;
-  padding-right: 15px;
-  // text-align: center;
-  display: flex !important;
-  background-color: black;
-  height: 80px;
+.footer {
+  background-color: var(--mainGray);
+  opacity: 0.8;
   width: 100%;
-  justify-content: space-between;
-
+  color: white;
+  margin-top: 15px;
   .footer-left {
     display: flex;
     align-items: center;
+
+    float: left;
     li {
-      margin-right: 20px;
+      margin-right: 10px;
       padding-right: 10px;
-      border-right: 1px solid white;
+      border-right: 0.5px solid white;
 
       a {
         color: white;
@@ -26,8 +24,12 @@ footer {
   }
   .footer-right {
     color: white;
-    p {
-      text-align: center;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .footerphone {
+      margin-right: 30px;
     }
   }
 }

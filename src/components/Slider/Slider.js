@@ -21,7 +21,7 @@ const properties = {
 
 const Slideshow = () => {
   return (
-    <div className="slide-container">
+    <div className="slide-container ">
       <Slide {...properties}>
         <div className="each-slide">
           <div style={{ backgroundImage: `url(${slideImages[0]})` }}>
