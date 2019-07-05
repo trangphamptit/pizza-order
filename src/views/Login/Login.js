@@ -5,13 +5,14 @@ import "./Login.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { apiLinks } from "../../services/APILinks";
+import { AppContext } from "../../services/AppContext";
+
 class Login extends Component {
   render() {
+    // console.log("context", this.context);
+    // console.log("props", this.props);
     return (
-      <Form
-        className="loginform col-12 col-md-8 col-lg-8 col-sm-12"
-        onSubmit={this.props.handleSubmit}
-      >
+      <Form className="loginform col-12 col-md-8 col-lg-8 col-sm-12">
         <h1 className="login-title">LOGIN </h1>
         <label for="email">
           <b>Email</b>
@@ -60,6 +61,7 @@ class Login extends Component {
   }
 }
 
+Login.contextType = AppContext;
 const LoginValidation = yup.object().shape({
   email: yup.string().required(),
   password: yup
@@ -68,11 +70,10 @@ const LoginValidation = yup.object().shape({
     .max(16)
     .required()
 });
-
 const FormikForm = withFormik({
   handleSubmit: (values, { props, setSubmitting }) => {
     // console.log("Submitted username:", values.username);
-    // console.log("Submitted Password:", values.password);
+    console.log("Props:", props);
 
     let loginLink = apiLinks.login;
     const { email, password } = values;
@@ -82,7 +83,10 @@ const FormikForm = withFormik({
         if (response.data && response.data.email) {
           console.log(response.data);
           localStorage.setItem("user", JSON.stringify(response.data));
-          props.history.push("/delivery");
+          //TODO: handle setState of User
+          window.location.href = `${window.location.protocol}//${
+            window.location.host
+          }`;
         } else {
           alert("email or password is wrong");
         }
@@ -96,4 +100,5 @@ const FormikForm = withFormik({
   },
   validationSchema: LoginValidation
 })(Login);
+
 export default FormikForm;

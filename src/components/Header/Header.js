@@ -4,7 +4,20 @@ import "./Header.scss";
 import logo from "../../image/logo.png";
 import avatar from "../../image/avatar.png";
 import { AppContext } from "../../services/AppContext";
+import { loadOptions } from "@babel/core";
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    let user = JSON.parse(localStorage.getItem("user"));
+    this.state = { user };
+  }
+
+  componentDidMount() {
+    if (this.state.user) {
+      this.context.setLoginState(true);
+    }
+  }
+
   unchecked() {
     let element = document.getElementById("toggler");
     // console.log(element.checked);
@@ -14,6 +27,8 @@ class Header extends Component {
   }
 
   render() {
+    console.log("render header");
+    const { cart, setLoginState } = this.context;
     return (
       <div className="header-container col-12">
         <div className="menu-wrap">
@@ -46,34 +61,49 @@ class Header extends Component {
           </Link>
         </div>
         <div className="header-right">
-          <div className="user">
-            <i class="fas fa-user-circle" />
-            <Link to="/login">
-              {" "}
-              <span className="login-header">login </span>
-            </Link>{" "}
-            /{" "}
-            <Link to="/signup">
-              {" "}
-              <span className="signup-header">signup </span>
+          {this.context.isLogin === true ? (
+            <div className="user">
+              <i class="fas fa-user-circle" />
+              <span>Hello, {this.state.user.name}</span>
+
+              <div
+                className="signup-header"
+                onClick={() => {
+                  localStorage.removeItem("user");
+                  this.context.setLoginState(false);
+                }}
+              >
+                logout{" "}
+              </div>
+            </div>
+          ) : (
+            <div className="user">
+              <i class="fas fa-user-circle" />{" "}
+              <Link to="/login">
+                {" "}
+                <span className="login-header">login </span>
+              </Link>{" "}
+              /{" "}
+              <Link to="/signup">
+                {" "}
+                <span className="signup-header">signup </span>
+              </Link>
+            </div>
+          )}
+
+          <div className="cart">
+            <Link to="/cart">
+              <i className="fas fa-cart-arrow-down" />
+
+              <span className="number-item"> {cart.length}</span>
             </Link>
           </div>
-
-          <AppContext.Consumer>
-            {({ cart }) => (
-              <div className="cart">
-                <Link to="/cart">
-                  <i className="fas fa-cart-arrow-down" />
-
-                  <span className="number-item"> {cart.length}</span>
-                </Link>
-              </div>
-            )}
-          </AppContext.Consumer>
         </div>
       </div>
     );
   }
 }
+
+Header.contextType = AppContext;
 
 export default Header;
