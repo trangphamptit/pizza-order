@@ -22,14 +22,14 @@
   background-color: #3f3d3d;
   max-width: 100%;
   height: auto;
-
+  max-height: 300px;
   margin-bottom: 15px;
   position: relative;
   img {
     border: 1px solid unset;
     width: 100%;
     height: auto;
-    max-height: 250px;
+    max-height: 300px;
   }
   .category-title {
     color: white;

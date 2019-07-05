@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./App.css";
 import Home from "./views/Home/Home";
-import UserProfile from "./views/UserProfile";
+import UserProfile from "./views/UserProfile/UserProfile";
 
 import Details from "./views/Details/Details";
 import ListCategory from "./views/ListCategory/ListCategory";

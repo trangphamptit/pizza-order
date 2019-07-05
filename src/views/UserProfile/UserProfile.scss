@@ -1,0 +1,37 @@
+.profile {
+  text-align: center;
+  margin: auto;
+  color: white;
+  // border: 1px solid gray;
+}
+.tab-list {
+  border-bottom: 1px solid #ccc;
+  padding-left: 0;
+}
+
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 0.5rem 0.75rem;
+  width: 50%;
+}
+
+.tab-list-active {
+  background-color: var(--mainGray);
+  border: solid #ccc;
+  border-width: 1px 1px 0 1px;
+}
+.tab-content {
+  height: 400px;
+  background-color: var(--mainGray);
+  padding: 15px;
+}
+.tabs {
+  margin-bottom: 15px;
+}
+.user-img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
