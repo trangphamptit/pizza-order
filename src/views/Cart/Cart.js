@@ -23,7 +23,7 @@ export default class Cart extends Component {
       <section>
         <AppContext.Consumer>
           {value => {
-            const { cart, count, getTotal } = value;
+            const { cart } = value;
             // console.log("cart", cart);
             // console.log("count", count);
             if (cart.length > 0) {

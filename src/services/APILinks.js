@@ -1,13 +1,14 @@
-// const rootLink = "pizza-products.herokuapp.com/";
+const url = "https://pizza-products-api.glitch.me";
+const orderURL = "https://order-pizza-api.glitch.me";
 let apiLinks = {
-  categories: "http://pizza-products.herokuapp.com/categories",
-  products: "http://pizza-products.herokuapp.com/pizzas",
-  details: "http://pizza-products.herokuapp.com/pizzas/${id}",
-  signup: "https://pizza-orders.herokuapp.com​/signup",
-  login: "https://pizza-orders.herokuapp.com​/login",
-  orders: "https://pizza-orders.herokuapp.com/orders",
-  bestsellers: "https://pizza-products.herokuapp.com/best-sellers",
-  productscategory: "https://pizza-products.herokuapp.com/pizzas/category/${id}"
+  categories: `${url}/categories`,
+  products: `${url}/pizzas`,
+  details: url + "/pizzas/${id}",
+  signup: `${orderURL}/signup`,
+  login: `${orderURL}​/login`,
+  orders: `${orderURL}/orders`,
+  bestsellers: `${url}/best-sellers`,
+  productscategory: url + "/pizzas/category/${id}"
 };
 
 export { apiLinks };

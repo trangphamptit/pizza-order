@@ -67,6 +67,19 @@ class AppProvider extends Component {
     this.setState({ cart: tempCart });
     console.log("hello");
   };
+  increment = item => {
+    let tempCart = [...this.state.cart];
+    let index = tempCart.indexOf(item);
+    tempCart[index].quantity += 1;
+
+    this.setState({ cart: [...tempCart] });
+  };
+  decrement = item => {
+    let tempCart = [...this.state.cart];
+    let index = tempCart.indexOf(item);
+    tempCart[index].quantity -= 1;
+    this.setState({ cart: [...tempCart] });
+  };
 
   render() {
     return (
@@ -77,7 +90,9 @@ class AppProvider extends Component {
           getTotal: this.getTotal,
           clearCart: this.clearCart,
           removeItem: this.removeItem,
-          setLoginState: this.setLoginState
+          setLoginState: this.setLoginState,
+          increment: this.increment,
+          decrement: this.decrement
         }}
       >
         {this.props.children}

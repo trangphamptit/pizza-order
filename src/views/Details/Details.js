@@ -58,7 +58,7 @@ class Details extends Component {
     const {
       _id,
       description,
-      discountPrice,
+
       name,
       price,
       variantProducts

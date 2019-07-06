@@ -3,9 +3,6 @@ import "./BestSellerProduct.scss";
 import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
 class Product extends Component {
-  constructor(props) {
-    super(props);
-  }
   _renderSize(size) {
     // console.log("size", size);
     return (
@@ -18,7 +15,7 @@ class Product extends Component {
   render() {
     const { bestseller } = this.props;
     console.log(bestseller);
-    const { _id, img, name, description, variantProducts } = bestseller;
+    const { _id, img, name, variantProducts } = bestseller;
     return (
       <div className="product col-xl-3 col-lg-3 col-md-3 col-sm-12">
         <div className="card ">

@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../image/logo.png";
-import avatar from "../../image/avatar.png";
 import { AppContext } from "../../services/AppContext";
-import { loadOptions } from "@babel/core";
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +56,7 @@ class Header extends Component {
 
         <div className="logo">
           <Link to="/">
-            <img src={logo} />
+            <img src={logo} alt="logo" />
           </Link>
         </div>
         <div className="header-right">

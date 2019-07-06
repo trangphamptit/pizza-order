@@ -3,9 +3,6 @@ import "./Product.scss";
 import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
 class Product extends Component {
-  constructor(props) {
-    super(props);
-  }
   _renderSize(size) {
     // console.log("size", size);
     return (
