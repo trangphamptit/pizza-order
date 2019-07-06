@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-import Slider from "../../components/Slider/Slider";
+// import Slider from "../../components/Slider/Slider";
 
 import { Link } from "react-router-dom";
 import ListCategory from "../ListCategory/ListCategory";
 import BestSellerProduct from "../BestSeller/BestSellerProduct";
 import Product from "../../components/Product/Product";
-import BestSeller from "../BestSeller/BestSeller";
+// import BestSeller from "../BestSeller/BestSeller";
 
 import { AppContext } from "../../services/AppContext";
 class Home extends Component {
@@ -16,9 +16,6 @@ class Home extends Component {
   }
 
   render() {
-    const { products } = this.context;
-    // console.log(products);
-    // console.log(bestsellers);
     return (
       <div className="home col-12">
         {/* <Slider /> */}

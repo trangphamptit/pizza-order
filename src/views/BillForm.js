@@ -22,7 +22,11 @@ class BillForm extends Component {
     const { cart, clearCart } = this.context;
     console.log("cart", cart);
     let orders = cart.map(item => {
-      let orderDetail = { productID: item._id, quantity: item.quantity };
+      let orderDetail = {
+        productID: item._id,
+        quantity: item.quantity,
+        type: item.type
+      };
       if (item.size) {
         orderDetail.variants = [{ key: item.size.key, value: item.size.value }];
         orderDetail.price = item.size.price;
@@ -53,14 +57,14 @@ class BillForm extends Component {
         }
       })
       .catch(function(error) {
-        console.log("Error");
+        console.log(error);
       });
   };
   render() {
     return (
       <AppContext.Consumer>
         {value => {
-          const { cart, getTotal } = value;
+          const { cart } = value;
           let total;
           if (cart.length > 0) {
             total = value.getTotal(cart);

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getProducts } from "./products";
 import { getCategories } from "./categories";
 import { getBestsellers } from "./bestseller";
+import { getProductscategory } from "./productscategory";
 export const AppContext = React.createContext();
 class AppProvider extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class AppProvider extends Component {
       products: [],
       categories: [],
       bestsellers: [],
+      productscategory: [],
       cart: [],
       user: null,
       // cartSubTotal: 0,
@@ -28,6 +30,10 @@ class AppProvider extends Component {
       getBestsellers: async () => {
         const bestsellers = await getBestsellers();
         this.setState({ bestsellers });
+      },
+      getProductscategory: async () => {
+        const productscategory = await getProductscategory();
+        this.setState({ productscategory });
       }
     };
   }
@@ -72,6 +78,19 @@ class AppProvider extends Component {
     const user = await localStorage.getItem('user');
     this.setState({ user: JSON.parse(user) });
   }
+  increment = item => {
+    let tempCart = [...this.state.cart];
+    let index = tempCart.indexOf(item);
+    tempCart[index].quantity += 1;
+
+    this.setState({ cart: [...tempCart] });
+  };
+  decrement = item => {
+    let tempCart = [...this.state.cart];
+    let index = tempCart.indexOf(item);
+    tempCart[index].quantity -= 1;
+    this.setState({ cart: [...tempCart] });
+  };
 
   render() {
     return (
@@ -83,7 +102,9 @@ class AppProvider extends Component {
           clearCart: this.clearCart,
           removeItem: this.removeItem,
           login: this.login,
-          logout: this.logout
+          logout: this.logout,
+          increment: this.increment,
+          decrement: this.decrement
         }}
       >
         {this.props.children}
