@@ -18,6 +18,7 @@ import Delivery from "./views/Delivery/Delivery";
 import ChoosePayment from "./views/Payment/ChoosePayment";
 import VisaForm from "./views/Payment/VisaForm";
 import AppProvider from "./services/AppContext";
+import ProductsCategory from "./views/ProductsCategory/ProductsCategory";
 class App extends Component {
   render() {
     return (
@@ -41,6 +42,10 @@ class App extends Component {
                 <Route path="/delivery" component={Delivery} />
                 <Route path="/choosepayment" component={ChoosePayment} />
                 <Route path="/visaform" component={VisaForm} />
+                <Route
+                  path="/productscategory/:id"
+                  component={ProductsCategory}
+                />
               </Switch>
             </div>
           </ContainerPage>

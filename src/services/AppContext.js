@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getProducts } from "./products";
 import { getCategories } from "./categories";
 import { getBestsellers } from "./bestseller";
+import { getProductscategory } from "./productscategory";
 export const AppContext = React.createContext();
 class AppProvider extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class AppProvider extends Component {
       products: [],
       categories: [],
       bestsellers: [],
+      productscategory: [],
       cart: [],
       isLogin: false,
       // cartSubTotal: 0,
@@ -27,6 +29,10 @@ class AppProvider extends Component {
       getBestsellers: async () => {
         const bestsellers = await getBestsellers();
         this.setState({ bestsellers });
+      },
+      getProductscategory: async () => {
+        const productscategory = await getProductscategory();
+        this.setState({ productscategory });
       }
     };
   }

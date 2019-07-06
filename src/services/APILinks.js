@@ -6,7 +6,8 @@ let apiLinks = {
   signup: "https://pizza-orders.herokuapp.com​/signup",
   login: "https://pizza-orders.herokuapp.com​/login",
   orders: "https://pizza-orders.herokuapp.com/orders",
-  bestsellers: "https://pizza-products.herokuapp.com/best-sellers"
+  bestsellers: "https://pizza-products.herokuapp.com/best-sellers",
+  productscategory: "https://pizza-products.herokuapp.com/pizzas/category/${id}"
 };
 
 export { apiLinks };
