@@ -6,18 +6,6 @@ import avatar from "../../image/avatar.png";
 import { AppContext } from "../../services/AppContext";
 import { loadOptions } from "@babel/core";
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    let user = JSON.parse(localStorage.getItem("user"));
-    this.state = { user };
-  }
-
-  componentDidMount() {
-    if (this.state.user) {
-      this.context.setLoginState(true);
-    }
-  }
-
   unchecked() {
     let element = document.getElementById("toggler");
     // console.log(element.checked);
@@ -27,8 +15,7 @@ class Header extends Component {
   }
 
   render() {
-    console.log("render header");
-    const { cart, setLoginState } = this.context;
+    const { user, cart, logout } = this.context;
     return (
       <div className="header-container col-12">
         <div className="menu-wrap">
@@ -61,24 +48,24 @@ class Header extends Component {
           </Link>
         </div>
         <div className="header-right">
-          {this.context.isLogin === true ? (
+          {user && user.name ? (
             <div className="user">
-              <i class="fas fa-user-circle" />
-              <span>Hello, {this.state.user.name}</span>
+              <i className="fas fa-user-circle" />
+              <span>Hello, {user.name} </span>
 
               <div
-                className="signup-header"
-                onClick={() => {
-                  localStorage.removeItem("user");
-                  this.context.setLoginState(false);
+                className="logout"
+                onClick={(e) => {
+                  e.preventDefault();
+                  logout();
                 }}
               >
-                logout{" "}
+                logout
               </div>
             </div>
           ) : (
             <div className="user">
-              <i class="fas fa-user-circle" />{" "}
+              <i className="fas fa-user-circle" />{" "}
               <Link to="/login">
                 {" "}
                 <span className="login-header">login </span>
