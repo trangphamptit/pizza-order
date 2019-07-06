@@ -100,7 +100,7 @@ class LoginContainer extends Component {
         initialValues={this.initialValues}
         onSubmit={this.onSubmit}
         validationSchema={LoginValidation}
-        render={props => <LoginForm {...props} {...this.context} />}
+        render={props => <LoginForm {...props}/>}
       />
     );
   }
