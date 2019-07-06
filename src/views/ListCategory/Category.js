@@ -10,7 +10,7 @@ class Category extends Component {
     return (
       <div className="category col-xl-6 col-lg-6 col-md-6 col-sm-6">
         <div className="categoryitem">
-          <Link to={`/details/${_id}`}>
+          <Link to={`/productscategory/${_id}`}>
             <img src={img ? img : product3} className="category-image" />
           </Link>
           <label className="category-title">{name}</label>

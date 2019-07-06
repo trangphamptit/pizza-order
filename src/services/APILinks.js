@@ -8,7 +8,7 @@ let apiLinks = {
   login: `${orderURL}​/login`,
   orders: `${orderURL}/orders`,
   bestsellers: `${url}/best-sellers`,
-  productscategory: url + "/pizzas/category/${id}"
+  productscategory: url + "/pizzas/category/"
 };
 
 export { apiLinks };
