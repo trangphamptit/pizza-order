@@ -12,7 +12,7 @@ class VisaForm extends Component {
         onSubmit={this.props.handleSubmit}
       >
         <h1 className="login-title">CARD INFORMATION </h1>
-        <label for="cardnumber">
+        <label htmlFor="cardnumber">
           <b>card number</b>
         </label>
         <input

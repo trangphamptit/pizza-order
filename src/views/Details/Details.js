@@ -186,7 +186,7 @@ class Details extends Component {
                         let toppingIDs = toppings.map(topping => topping._id);
                         let productID = this.state.details._id;
                         let note = { [productID]: toppingIDs };
-                        console.log("note", note);
+                        // console.log("note", note);
                         orderDetails.push({
                           ...this.state.details,
                           crust,
@@ -213,11 +213,6 @@ class Details extends Component {
     }
   }
 }
-
-// const DetailsValidation = yup.object().shape({
-//   size: yup.string().required(),
-//   crust: yup.string().required()
-// });
 
 const FormikForm = withFormik({
   mapPropsToValues: () => {

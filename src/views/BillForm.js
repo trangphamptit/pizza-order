@@ -16,7 +16,7 @@ class BillForm extends Component {
     this.setState({ user: user, deliveryinfor: deliveryinfor });
   };
   componentDidMount() {
-    const getLocal = this.getFromLocal();
+    // const getLocal = this.getFromLocal();
   }
   createOrder = () => {
     const { cart, clearCart } = this.context;

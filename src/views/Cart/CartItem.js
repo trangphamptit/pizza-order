@@ -1,7 +1,7 @@
 import React from "react";
 import { AppContext } from "../../services/AppContext";
 export default function CartItem({ item, value }) {
-  const { removeItem, increment, decrement } = value;
+  // const { removeItem, increment, decrement } = value;
   console.log("item", item);
   return (
     <div className="col-12 my-2 text-capitalize text-center">

@@ -15,7 +15,7 @@ class Product extends Component {
   render() {
     const { product } = this.props;
     // console.log(product);
-    const { _id, img, name, description, variantProducts } = product;
+    const { _id, img, name, variantProducts } = product;
     // console.log(product._id);
     return (
       <div className="product col-xl-3 col-lg-3 col-md-3 col-sm-12">

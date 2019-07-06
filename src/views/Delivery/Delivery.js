@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Form, ErrorMessage, withFormik } from "formik";
 import * as yup from "yup";
 import "./Delivery.scss";
+import payondelivery from "../../image/payondelivery.jpg";
+import visacard from "../../image/visacard.png";
 
 class Delivery extends Component {
   render() {
@@ -41,6 +43,36 @@ class Delivery extends Component {
           <ErrorMessage name="time" />
         </div>
 
+        <div className="choosepayment">
+          <div className="paymenttype col-6">
+            <input
+              type="radio"
+              name="payment"
+              value="delivery"
+              id="delivery"
+              onChange={this.props.handleChange}
+            />{" "}
+            <label htmlFor="delivery">
+              <img src={payondelivery} />
+            </label>
+          </div>
+
+          <div className="paymenttype col-6">
+            <input
+              type="radio"
+              name="payment"
+              value="oncard"
+              id="oncard"
+              onChange={this.props.handleChange}
+            />{" "}
+            <label htmlFor="oncard">
+              <img src={visacard} />
+            </label>
+          </div>
+        </div>
+        <div className="error">
+          <ErrorMessage name="payment" />
+        </div>
         <button type="submit" onClick={this.props.history.goBack}>
           {" "}
           Go back{" "}
@@ -55,9 +87,9 @@ class Delivery extends Component {
 }
 
 const DeliveryValidation = yup.object().shape({
-  guide: yup.string().required(),
   address: yup.string().required(),
-  time: yup.string().required()
+  time: yup.string().required(),
+  payment: yup.string().required()
 });
 
 const FormikForm = withFormik({
@@ -65,7 +97,8 @@ const FormikForm = withFormik({
     return {
       address: "",
       guide: "",
-      time: ""
+      time: "",
+      payment: ""
     };
   },
 
