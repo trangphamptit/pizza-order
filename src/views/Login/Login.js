@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { apiLinks } from "../../services/APILinks";
 import { AppContext } from "../../services/AppContext";
-
+const HISTORY_LENGTH_FIRST_HIT = 2;
 const LoginValidation = yup.object().shape({
   email: yup.string().required(),
   password: yup
@@ -64,25 +64,29 @@ class LoginContainer extends Component {
   };
 
   onSubmit = (values, actions) => {
-    const { context: setLoginState } = this;
+    const { context: { login } } = this;
+    const { history } = this.props;
     const { login: loginLink } = apiLinks;
     const { email, password } = values;
+    
     axios
       .post(loginLink, { email, password })
-      .then(function(response) {
-        if (response.data && response.data.email) {
-          console.log(response.data);
-          localStorage.setItem("user", JSON.stringify(response.data));
-          window.location.href = `${window.location.protocol}//${
-            window.location.host
-          }`;
-          setLoginState(true);
+      .then((response) => {
+        const { data } = response;
+        if (data && data.email) {
+          login(data);
+          if (history.length > HISTORY_LENGTH_FIRST_HIT) {
+            history.goBack();
+          } else {
+            history.push('/'); // push to root
+          }
         } else {
           alert("email or password is wrong");
         }
       })
       .catch(error => {
         console.log(error);
+        alert("Internal server error!");
       })
       .finally(() => {
         actions.setSubmitting(false);
@@ -90,12 +94,13 @@ class LoginContainer extends Component {
   };
 
   render() {
+
     return (
       <Formik
         initialValues={this.initialValues}
         onSubmit={this.onSubmit}
         validationSchema={LoginValidation}
-        render={props => <LoginForm {...props} />}
+        render={props => <LoginForm {...props}/>}
       />
     );
   }

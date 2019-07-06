@@ -7,13 +7,14 @@ export const AppContext = React.createContext();
 class AppProvider extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       products: [],
       categories: [],
       bestsellers: [],
       productscategory: [],
       cart: [],
-      isLogin: false,
+      user: null,
       // cartSubTotal: 0,
       // cartTotal: 0,
       // total: 0,
@@ -37,8 +38,14 @@ class AppProvider extends Component {
     };
   }
 
-  setLoginState = state => {
-    this.setState({ isLogin: state });
+  login = user => {
+    this.setState({ user });
+    localStorage.setItem('user', JSON.stringify(user));
+  };
+
+  logout = user => {
+    this.setState({ user: null });
+    localStorage.removeItem('user');
   };
 
   addToCart = product => {
@@ -67,6 +74,10 @@ class AppProvider extends Component {
     this.setState({ cart: tempCart });
     console.log("hello");
   };
+  componentDidMount = async () => {
+    const user = await localStorage.getItem('user');
+    this.setState({ user: JSON.parse(user) });
+  }
   increment = item => {
     let tempCart = [...this.state.cart];
     let index = tempCart.indexOf(item);
@@ -90,7 +101,8 @@ class AppProvider extends Component {
           getTotal: this.getTotal,
           clearCart: this.clearCart,
           removeItem: this.removeItem,
-          setLoginState: this.setLoginState,
+          login: this.login,
+          logout: this.logout,
           increment: this.increment,
           decrement: this.decrement
         }}
