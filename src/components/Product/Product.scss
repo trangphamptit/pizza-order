@@ -1,12 +1,12 @@
 .product {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: auto;
   .card {
     border-color: transparent;
-    background-color: #3f3d3d;
   }
   .card-footer {
     padding: 15px;
-    background: #3f3d3d;
+
     border-top: transparent;
     display: flex;
     justify-content: space-between;
