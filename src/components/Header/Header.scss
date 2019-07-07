@@ -1,39 +1,92 @@
 .header {
   width: 100%;
-  height: 90px;
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  opacity: 0.8;
+  background-color: var(--mainDark);
+  // opacity: 0.8;
+  top: 0;
+  left: 0;
+  position: fixed;
+  .header-container {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
 
-  .logo {
-  }
-  .header-right {
-    cursor: pointer;
-    .navbar {
-      margin-bottom: 0;
-      li {
-        margin-right: 7px;
-        display: block;
-        padding: 5px 10px;
-        a {
-          // color: white;
+    .header-right {
+      display: flex;
+      align-items: center;
+      .navbar {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+        li {
+          display: block;
+          margin-right: 15px;
+        }
+      }
+
+      .user-nav-account {
+        display: flex;
+        margin-right: 30px;
+        li {
+          margin-right: 10px;
+          display: block;
+        }
+      }
+
+      .cart-nav {
+        position: relative;
+        margin-right: 15px;
+        .fa-cart-arrow-down {
+          color: white;
+          font-size: 1.4rem;
+        }
+
+        .number-item {
+          background-color: red;
+          width: 18px;
+          height: 18px;
+          font-size: 0.75rem;
+          border-radius: 50%;
+          top: 0px;
+          left: 77%;
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .fa-cart-arrow-down:hover {
+          transition: 0.75ms;
+          color: var(--lightBlue);
         }
       }
     }
-    display: flex;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   .header {
     .header-right {
-      display: none;
+      .nav-res {
+        visibility: hidden;
+      }
+      .nav {
+        visibility: visible;
+      }
     }
   }
 }
+@media only screen and (max-width: 768px) {
+  .header {
+    .header-right {
+      .nav-res {
+        visibility: visible;
+      }
+      .nav {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
 // .header-container {
 //   background-color: var(--mainGray);
 //   height: 60px;

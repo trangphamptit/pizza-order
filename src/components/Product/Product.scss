@@ -1,44 +1,41 @@
 .product {
-  margin-bottom: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   .card {
     border-color: transparent;
     background-color: #3f3d3d;
   }
-
   .card-footer {
+    padding: 15px;
     background: #3f3d3d;
     border-top: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     .product-name {
-      margin-bottom: 0px;
-      color: white;
-
       font-size: 0.8rem;
     }
     .product-price {
       font-style: italic;
       margin-bottom: 0px;
       color: white;
-      // font-weight: 700;
       font-size: 0.8rem;
     }
   }
+
   &:hover {
     .card {
-      border: 0.04rem solid rgba(0, 0, 0, 0.2);
-      box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+      // border: 0.04rem solid rgba(0, 0, 0, 0.2);
+      // box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
     }
     .card-footer {
-      background-color: gray;
+      // background-color: gray;
     }
   }
 
   .img-container {
     position: relative;
     overflow: hidden;
+    width: 100%;
   }
 
   .card-img-top {

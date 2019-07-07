@@ -5,12 +5,10 @@ import "./ContainerPage.scss";
 class ContainerPage extends Component {
   render() {
     return (
-      <div className="mainpage container-fluid">
-        <div className="row">
-          <Header />
-          <section className="section col-12">{this.props.children}</section>
-          <Footer />
-        </div>
+      <div className="mainpage">
+        <Header />
+        <section className="section">{this.props.children}</section>
+        <Footer />
       </div>
     );
   }
