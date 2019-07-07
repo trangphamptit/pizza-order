@@ -3,6 +3,9 @@
   flex-direction: column;
   margin: auto;
   padding: 16px;
+  padding: 15px;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 .delivery-title {
   text-align: center;
@@ -15,4 +18,18 @@ input[type="time"] {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+.delivery-footer {
+  display: flex;
+  justify-content: space-around;
+}
+.choosepayment {
+  display: flex;
+  justify-content: space-between;
+  .paymenttype {
+    width: 100%;
+    .payment-img {
+      width: 100%;
+    }
+  }
 }

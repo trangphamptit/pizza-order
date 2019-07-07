@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Form, ErrorMessage, withFormik } from "formik";
 import * as yup from "yup";
 
-import { Link } from "react-router-dom";
-
 class VisaForm extends Component {
   render() {
     return (

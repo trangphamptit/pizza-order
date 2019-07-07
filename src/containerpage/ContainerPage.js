@@ -8,7 +8,7 @@ class ContainerPage extends Component {
       <div className="mainpage container-fluid">
         <div className="row">
           <Header />
-          <section className="col-12">{this.props.children}</section>
+          <section className="section col-12">{this.props.children}</section>
           <Footer />
         </div>
       </div>

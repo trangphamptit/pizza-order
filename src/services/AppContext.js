@@ -28,8 +28,8 @@ class AppProvider extends Component {
         const bestsellers = await getBestsellers();
         this.setState({ bestsellers });
       },
-      getProductscategory: async () => {
-        const productscategory = await getProductscategory();
+      getProductscategory: async (id) => {
+        const productscategory = await getProductscategory(id);
         this.setState({ productscategory });
       }
     };

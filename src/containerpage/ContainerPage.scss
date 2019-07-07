@@ -1,5 +1,13 @@
 .mainpage {
   background-image: url("../image/bg.jpg");
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+}
+section {
+  flex: 1;
 }
 a {
   text-decoration: none;
@@ -8,7 +16,7 @@ a {
   -moz-transition: 0.5s all;
   -o-transition: 0.5s all;
   -ms-transition: 0.5s all;
-  color: black;
+  color: white;
 }
 
 a:hover {

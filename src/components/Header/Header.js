@@ -16,8 +16,37 @@ class Header extends Component {
   render() {
     const { user, cart, logout } = this.context;
     return (
-      <div className="header-container col-12">
-        <div className="menu-wrap">
+      <div className="header col-12">
+        <div className="logo">logo</div>
+        <div className="header-right">
+          <ul className="navbar">
+            <li>
+              <Link to="/">home</Link>
+            </li>
+            <li>
+              {" "}
+              <Link to="/">category</Link>
+            </li>
+            <li>
+              {" "}
+              <Link to="/">profile</Link>
+            </li>
+            <li>
+              {" "}
+              <Link to="/">about us</Link>{" "}
+            </li>
+            <li>
+              {" "}
+              <i className="fas fa-user-circle" />
+            </li>
+            <li>
+              {" "}
+              <i className="fas fa-cart-arrow-down" />
+            </li>
+          </ul>
+        </div>
+
+        {/* <div className="menu-wrap">
           <input type="checkbox" id="toggler" />
           <div className="hamburger">
             <div />
@@ -84,7 +113,7 @@ class Header extends Component {
               <span className="number-item"> {cart.length}</span>
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

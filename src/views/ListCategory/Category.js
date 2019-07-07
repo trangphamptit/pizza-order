@@ -10,10 +10,10 @@ class Category extends Component {
     return (
       <div className="category col-xl-6 col-lg-6 col-md-6 col-sm-6">
         <div className="categoryitem">
-          <Link to={`/details/${_id}`}>
+          <Link to={`/productscategory/${_id}`}>
             <img
+              alt="category-img "
               src={img ? img : product3}
-              alt="categoryimg"
               className="category-image"
             />
           </Link>

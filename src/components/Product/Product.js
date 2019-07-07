@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Product.scss";
 import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
+
 class Product extends Component {
   _renderSize(size) {
     // console.log("size", size);

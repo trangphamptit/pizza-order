@@ -53,7 +53,11 @@ class Delivery extends Component {
               onChange={this.props.handleChange}
             />{" "}
             <label htmlFor="delivery">
-              <img src={payondelivery} />
+              <img
+                className=" payment-img"
+                src={payondelivery}
+                alt="payondelivery"
+              />
             </label>
           </div>
 
@@ -66,21 +70,31 @@ class Delivery extends Component {
               onChange={this.props.handleChange}
             />{" "}
             <label htmlFor="oncard">
-              <img src={visacard} />
+              <img className="payment-img" src={visacard} alt="visacard" />
             </label>
           </div>
+          <div className="error">
+            <ErrorMessage name="payment" />
+          </div>
         </div>
-        <div className="error">
-          <ErrorMessage name="payment" />
+        <div className="delivery-footer ">
+          <button
+            className="btn-delivery"
+            type="submit"
+            onClick={this.props.history.goBack}
+          >
+            {" "}
+            Go back{" "}
+          </button>
+          <button
+            className="btn-delivery"
+            type="submit"
+            onClick={this.props.handleSubmit}
+          >
+            {" "}
+            Submit{" "}
+          </button>
         </div>
-        <button type="submit" onClick={this.props.history.goBack}>
-          {" "}
-          Go back{" "}
-        </button>
-        <button type="submit" onClick={this.props.handleSubmit}>
-          {" "}
-          Submit{" "}
-        </button>
       </Form>
     );
   }
@@ -106,7 +120,7 @@ const FormikForm = withFormik({
     console.log("Submitted delivery:", values);
     let deliveryinfor = values;
     localStorage.setItem("deliveryinfor", JSON.stringify(deliveryinfor));
-    props.history.push("/choosepayment");
+    props.history.push("/billform");
 
     // Simulates the delay of a real request
     setTimeout(() => setSubmitting(false), 3 * 1000);
