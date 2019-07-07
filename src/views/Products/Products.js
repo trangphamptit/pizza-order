@@ -13,11 +13,11 @@ class Products extends Component {
     const { products } = this.context;
     // console.log(products);
     return (
-      <Grid container className="products">
-        {products.map((product, index) => (
-          <Product key={index} product={product} />
-        ))}
-      </Grid>
+      // <Grid container className="products">
+      products.map((product, index) => (
+        <Product key={index} product={product} />
+      ))
+      // </Grid>
     );
   }
 }

@@ -1,45 +1,23 @@
-import React from "react";
-import { Slide } from "react-slideshow-image";
-import "./Slider.scss";
-// import { isContainer } from "postcss-selector-parser";
-const slideImages = [
-  "https://www.pizzahut.vn/menu/v000001/hk/tc/images/C18.png",
-  "https://www.pizzahut.vn/menu/v000001/hk/tc/images/C18.png",
-  "https://www.pizzahut.vn/menu/v000001/hk/tc/images/C18.png"
-];
+import React, { Component } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import Products from "../../views/Products/Products";
 
-const properties = {
-  duration: 5000,
-  transitionDuration: 500,
-  infinite: true,
-  indicators: true,
-  arrows: true,
-  onChange: (oldIndex, newIndex) => {
-    console.log(`slide transition from ${oldIndex} to ${newIndex}`);
+class Slider extends Component {
+  render() {
+    return (
+      <Carousel autoPlay>
+        <div>
+          <img src="http://lorempixel.com/output/cats-q-c-320-320-5.jpg" />
+          <p className="legend">Legend 5</p>
+        </div>
+        <div>
+          <img src="http://lorempixel.com/output/cats-q-c-320-320-6.jpg" />
+          <p className="legend">Legend 6</p>
+        </div>
+      </Carousel>
+    );
   }
-};
+}
 
-const Slideshow = () => {
-  return (
-    <div className="slide-container ">
-      <Slide {...properties}>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[0]})` }}>
-            <span>Slide 1</span>
-          </div>
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[1]})` }}>
-            <span>Slide 2</span>
-          </div>
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[2]})` }}>
-            <span>Slide 3</span>
-          </div>
-        </div>
-      </Slide>
-    </div>
-  );
-};
-export default Slideshow;
+export default Slider;
