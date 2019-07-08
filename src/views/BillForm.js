@@ -16,7 +16,7 @@ class BillForm extends Component {
     this.setState({ user: user, deliveryinfor: deliveryinfor });
   };
   componentDidMount() {
-    // const getLocal = this.getFromLocal();
+    const getLocal = this.getFromLocal();
   }
   createOrder = () => {
     const { cart, clearCart } = this.context;
@@ -162,14 +162,14 @@ class BillForm extends Component {
                             <td className="left">
                               <strong>Shipping fee</strong>
                             </td>
-                            <td className="right">30.000vnđ</td>
+                            <td className="right">1 $ </td>
                           </tr>
                           <tr>
                             <td className="left">
                               <strong>Bill</strong>
                             </td>
                             <td className="right">
-                              <strong>{total + 30000}vnđ</strong>
+                              <strong>{total + 1}$</strong>
                             </td>
                           </tr>
                         </tbody>

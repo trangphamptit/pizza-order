@@ -19,35 +19,37 @@ import ChoosePayment from "./views/Payment/ChoosePayment";
 import VisaForm from "./views/Payment/VisaForm";
 import AppProvider from "./services/AppContext";
 import ProductsCategory from "./views/ProductsCategory/ProductsCategory";
+import About from "./views/About/About";
 class App extends Component {
   render() {
     return (
       <AppProvider>
         <BrowserRouter>
           <ContainerPage>
-            {/* <div className="App"> */}
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/userprofile" component={UserProfile} />
+            <div className="App">
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/userprofile" component={UserProfile} />
 
-              {/* <Route path="/details" component={Details} /> */}
-              <Route path="/details/:id" component={Details} />
-              <Route path="/listcategory" component={ListCategory} />
-              <Route path="/products" component={Products} />
-              <Route path="/bestseller" component={BestSeller} />
-              <Route path="/cart" component={Cart} />
-              <Route path="/billform" component={BillForm} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/delivery" component={Delivery} />
-              <Route path="/choosepayment" component={ChoosePayment} />
-              <Route path="/visaform" component={VisaForm} />
-              <Route
-                path="/productscategory/:id"
-                component={ProductsCategory}
-              />
-            </Switch>
-            {/* </div> */}
+                {/* <Route path="/details" component={Details} /> */}
+                <Route path="/details/:id" component={Details} />
+                <Route path="/listcategory" component={ListCategory} />
+                <Route path="/products" component={Products} />
+                <Route path="/bestseller" component={BestSeller} />
+                <Route path="/cart" component={Cart} />
+                <Route path="/billform" component={BillForm} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/delivery" component={Delivery} />
+                <Route path="/choosepayment" component={ChoosePayment} />
+                <Route path="/visaform" component={VisaForm} />
+                <Route
+                  path="/productscategory/:id"
+                  component={ProductsCategory}
+                />
+                <Route path="/about" component={About} />
+              </Switch>
+            </div>
           </ContainerPage>
         </BrowserRouter>
       </AppProvider>

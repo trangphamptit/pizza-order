@@ -79,7 +79,7 @@ class Delivery extends Component {
         </div>
         <div className="delivery-footer ">
           <button
-            className="btn-delivery"
+            className="btn btn-outline-danger text-uppercase mb-3 px-5 "
             type="submit"
             onClick={this.props.history.goBack}
           >
@@ -87,7 +87,7 @@ class Delivery extends Component {
             Go back{" "}
           </button>
           <button
-            className="btn-delivery"
+            className="btn btn-outline-danger text-uppercase mb-3 px-5"
             type="submit"
             onClick={this.props.handleSubmit}
           >

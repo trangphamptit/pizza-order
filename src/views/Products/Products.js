@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import Product from "../../components/Product/Product";
 import { AppContext } from "../../services/AppContext";
-import Grid from "@material-ui/core/Grid";
-
-import "./Products.scss";
 
 class Products extends Component {
   componentDidMount() {
@@ -12,12 +9,15 @@ class Products extends Component {
 
   render() {
     const { products } = this.context;
+    // console.log(products);
     return (
-      <Grid container spacing={4} className="products">
-        {products.map((product, index) => (
-          <Product key={index} product={product} />
-        ))}
-      </Grid>
+      <div className="products">
+        <div className="row">
+          {products.map((product, index) => (
+            <Product key={index} product={product} />
+          ))}
+        </div>
+      </div>
     );
   }
 }

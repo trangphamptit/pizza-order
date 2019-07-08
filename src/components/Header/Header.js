@@ -1,94 +1,89 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-
+import logo from "../../image/logo-pizza.png";
 import { AppContext } from "../../services/AppContext";
-import TemporaryDrawer from "./Header-res";
+
 class Header extends Component {
-  // unchecked() {
-  //   let element = document.getElementById("toggler");
-  //   // console.log(element.checked);
-  //   if (element.checked) {
-  //     element.checked = false;
-  //   }
-  // }
+  unchecked() {
+    let element = document.getElementById("toggler");
+    // console.log(element.checked);
+    if (element.checked) {
+      element.checked = false;
+    }
+  }
 
   render() {
     const { user, cart, logout } = this.context;
     return (
-      <div className="header">
-        <div className="header-container">
-          <div className="logo">
-            <Link to="/">logo</Link>
+      <div className="header-container col-12">
+        <div className="menu-wrap">
+          <input type="checkbox" id="toggler" />
+          <div className="hamburger">
+            <div />
           </div>
-
-          <div className="header-right">
-            <ul className="navbar">
-              <li>
-                <Link to="/">home</Link>
-              </li>
-              <li>
-                {" "}
-                <Link to="/listcategory">category</Link>
-              </li>
-              <li>
-                {" "}
-                <Link to="/userprofile">profile</Link>
-              </li>
-              <li>
-                {" "}
-                <Link to="/">about us</Link>{" "}
-              </li>
-            </ul>
-
-            <div className="user-nav">
-              {user && user.name ? (
-                <ul className="user-nav-account">
+          <div className="menu" onClick={this.unchecked}>
+            <div>
+              <div>
+                <ul>
                   <li>
-                    <i className="fas fa-user-circle" />
+                    <Link to="/">Home</Link>
                   </li>
-                  <li>Hello, {user.name} </li>
-                  <li>/</li>
-                  <li
-                    className="logout"
-                    onClick={e => {
-                      e.preventDefault();
-                      logout();
-                    }}
-                  >
-                    logout
+                  <li>
+                    <Link to="/listcategory">Category</Link>
+                  </li>
+                  <li>
+                    <Link to="/userprofile">Profile</Link>
+                  </li>
+                  <li>
+                    <Link to="/about">About us</Link>
                   </li>
                 </ul>
-              ) : (
-                <ul className="user-nav-account">
-                  <li>
-                    {" "}
-                    <i className="fas fa-user-circle" />
-                  </li>
-                  <li>
-                    {" "}
-                    <Link to="/login">login</Link>
-                  </li>
-                  /
-                  <li>
-                    {" "}
-                    <Link to="/signup">signup</Link>
-                  </li>
-                </ul>
-              )}
+              </div>
             </div>
+          </div>
+        </div>
 
-            <div className="cart-nav">
-              <Link to="/cart">
-                <i className="fas fa-cart-arrow-down" />
+        <div className="logo">
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+        </div>
+        <div className="header-right">
+          {user && user.name ? (
+            <div className="user">
+              <span className="user-item">Hello, {user.name} </span>
 
-                <span className="number-item"> {cart.length}</span>
+              <div
+                className="user-item logout"
+                onClick={e => {
+                  e.preventDefault();
+                  logout();
+                }}
+              >
+                logout
+              </div>
+            </div>
+          ) : (
+            <div className="user">
+              <Link to="/login">
+                {" "}
+                <span className="user-item login-header">login </span>
+              </Link>{" "}
+              /{" "}
+              <Link to="/signup">
+                {" "}
+                <span className="user-item signup-header">signup </span>
               </Link>
             </div>
+          )}
 
-            <div className="nav-res">
-              <TemporaryDrawer />
-            </div>
+          <div className="cart">
+            <Link to="/cart">
+              <i className="fas fa-cart-arrow-down" />
+
+              <span className="number-item"> {cart.length}</span>
+            </Link>
           </div>
         </div>
       </div>

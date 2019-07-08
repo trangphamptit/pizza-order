@@ -6,6 +6,18 @@ import { AppContext } from "../../services/AppContext";
 import CartList from "./CartList";
 import CartTotals from "./CartTotals";
 export default class Cart extends Component {
+  // getTotal(cart) {
+  //   let _total = 0;
+  //   cart.map(item => {
+  //     if (item.size) {
+  //       _total += item.size.price * item.quantity;
+  //     } else {
+  //       _total += item.price * item.quantity;
+  //     }
+  //   });
+  //   return _total;
+  // }
+
   render() {
     return (
       <section>
@@ -18,7 +30,7 @@ export default class Cart extends Component {
               const total = value.getTotal(cart);
               return (
                 <React.Fragment>
-                  <Title name="your cart" />
+                  <h1 style={{ textAlign: "center" }}>your cart</h1>
                   <CartColumns />
                   <CartList value={cart} />
                   <CartTotals

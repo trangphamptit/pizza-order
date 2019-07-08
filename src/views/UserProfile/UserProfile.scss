@@ -19,13 +19,12 @@
 }
 
 .tab-list-active {
-  background-color: var(--mainGray);
-  border: solid #ccc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-width: 1px 1px 0 1px;
 }
 .tab-content {
   height: 400px;
-  background-color: var(--mainGray);
+
   padding: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   .user-img {
@@ -35,6 +34,8 @@
     margin-bottom: 15px;
   }
   h4 {
+    font-style: italic;
+    text-transform: capitalize;
   }
   label {
     width: 100%;
@@ -42,6 +43,8 @@
     background-color: black;
     padding: 5px 0px;
     margin: 5px 0px 15px;
+    opacity: 0.8;
+    border-radius: 8px;
   }
 }
 .tabs {

@@ -6,11 +6,13 @@ class Footer extends Component {
   render() {
     return (
       // <div className="container-fluid">
-      <footer className="footer col-12">
-        <div className="row">
+      <footer className=" footer col-12">
+        <div className="footer-container row ">
           <ul className="footer-left col-6">
             <li>
-              <span>Pizza Viet Nam</span>
+              <span>
+                <i class="fas fa-at" /> Pizza T&T
+              </span>
             </li>
             <li>
               <Link to="/">policy</Link>
@@ -27,12 +29,12 @@ class Footer extends Component {
                 09090909
               </span>
             </div>
-
-            <img
-              src={visacard}
-              style={{ maxHeight: "60px", width: "auto" }}
-              alt="visacard"
-            />
+            <li>
+              <i class="fab fa-facebook-f" />
+            </li>
+            <li>
+              <i class="fab fa-youtube" />
+            </li>
           </div>
         </div>
       </footer>

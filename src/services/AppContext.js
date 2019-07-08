@@ -15,6 +15,9 @@ class AppProvider extends Component {
       productscategory: [],
       cart: [],
       user: null,
+      // cartSubTotal: 0,
+      // cartTotal: 0,
+      // total: 0,
 
       getProducts: async () => {
         const products = await getProducts();
@@ -28,7 +31,7 @@ class AppProvider extends Component {
         const bestsellers = await getBestsellers();
         this.setState({ bestsellers });
       },
-      getProductscategory: async (id) => {
+      getProductscategory: async id => {
         const productscategory = await getProductscategory(id);
         this.setState({ productscategory });
       }
@@ -51,7 +54,6 @@ class AppProvider extends Component {
     });
     console.log("cart", this.state.cart);
   };
-
   getTotal = cart => {
     let _total = 0;
     cart.map(item => {
@@ -67,18 +69,15 @@ class AppProvider extends Component {
   clearCart = () => {
     this.setState({ cart: [] });
   };
-
   removeItem = _id => {
     let tempCart = this.state.cart.filter(item => item._id !== _id);
     this.setState({ cart: tempCart });
     console.log("hello");
   };
-
   componentDidMount = async () => {
     const user = await localStorage.getItem("user");
     this.setState({ user: JSON.parse(user) });
   };
-
   increment = item => {
     let tempCart = [...this.state.cart];
     let index = tempCart.indexOf(item);
@@ -86,7 +85,6 @@ class AppProvider extends Component {
 
     this.setState({ cart: [...tempCart] });
   };
-
   decrement = item => {
     let tempCart = [...this.state.cart];
     let index = tempCart.indexOf(item);

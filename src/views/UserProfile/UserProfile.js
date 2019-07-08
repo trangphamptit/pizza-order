@@ -5,10 +5,13 @@ import userimg from "../../image/userimg.jpg";
 import { AppContext } from "../../services/AppContext";
 class UserProfile extends Component {
   render() {
-    // const user = JSON.parse(localStorage.getItem("user"));
-    // console.log(user);
     const { user } = this.context;
-    console.log("user", user);
+    if (user) {
+      console.log("user", user);
+    } else {
+      console.log("err");
+    }
+
     if (user) {
       return (
         <div className="profile col-10">
@@ -35,6 +38,5 @@ class UserProfile extends Component {
     }
   }
 }
-
 UserProfile.contextType = AppContext;
 export default UserProfile;

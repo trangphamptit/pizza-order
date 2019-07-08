@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Form, ErrorMessage, withFormik } from "formik";
 import * as yup from "yup";
 
+import { Link } from "react-router-dom";
+
 class VisaForm extends Component {
   render() {
     return (
@@ -10,7 +12,7 @@ class VisaForm extends Component {
         onSubmit={this.props.handleSubmit}
       >
         <h1 className="login-title">CARD INFORMATION </h1>
-        <label htmlFor="cardnumber">
+        <label for="cardnumber">
           <b>card number</b>
         </label>
         <input

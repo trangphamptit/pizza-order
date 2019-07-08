@@ -76,8 +76,6 @@ class Details extends Component {
             </div>
 
             <div className="detail-right col-sm-12 col-md-6 col-lg-6 col-xl-6">
-              <span className="price">{price} ₫</span>
-
               <Form className="select" onSubmit={this.props.handleSubmit}>
                 <h4>Select size</h4>
                 <div className="selectSize">
@@ -147,6 +145,7 @@ class Details extends Component {
                           type="checkbox"
                           name={`toppings${index}`}
                           value={topping._id}
+                          id={topping._id}
                           onChange={this.handleSelectTopping}
                         />{" "}
                         <label htmlFor={topping._id}>{topping.name}</label>
@@ -170,7 +169,7 @@ class Details extends Component {
                   {value => (
                     <button
                       type="submit"
-                      className="addtocart"
+                      className="btn btn-outline-danger text-uppercase mb-3 px-5"
                       onClick={() => {
                         let orderDetails = [];
 
@@ -232,6 +231,7 @@ const FormikForm = withFormik({
 
   handleSubmit: (values, { props, state }) => {
     console.log("values", values);
+    props.history.push("/cart");
   }
 })(Details);
 export default FormikForm;

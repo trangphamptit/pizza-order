@@ -12,8 +12,8 @@ class ListCategory extends Component {
     console.log(categories);
     return (
       <div className="listcategory row">
-        {categories.map((category, index) => (
-          <Category key={index} category={category} />
+        {categories.map(category => (
+          <Category key={category.id} category={category} />
         ))}
       </div>
     );

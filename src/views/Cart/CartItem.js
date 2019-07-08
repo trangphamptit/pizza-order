@@ -1,7 +1,7 @@
 import React from "react";
 import { AppContext } from "../../services/AppContext";
 export default function CartItem({ item, value }) {
-  // const { removeItem, increment, decrement } = value;
+  const { removeItem, increment, decrement } = value;
   console.log("item", item);
   return (
     <div className="col-12 my-2 text-capitalize text-center">
@@ -29,7 +29,10 @@ export default function CartItem({ item, value }) {
                   >
                     -
                   </button>
-                  <span className="btn btn-dark mx-1"> {item.quantity}</span>
+                  <button className="btn btn-dark mx-1">
+                    {" "}
+                    {item.quantity}
+                  </button>
                   <button
                     className="btn btn-dark mx-1"
                     onClick={() => value.increment(item)}
@@ -55,7 +58,7 @@ export default function CartItem({ item, value }) {
                 {item.size
                   ? item.quantity * item.size.price
                   : item.quantity * item.price}
-                vnđ
+                $
               </span>
             </div>
           </div>

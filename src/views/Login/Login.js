@@ -40,17 +40,19 @@ const LoginForm = props => {
         <ErrorMessage name="password" />
       </div>
 
-      <button type="submit">Login</button>
+      <button
+        className=" btn btn-outline-danger text-uppercase mb-3 px-5"
+        type="submit"
+      >
+        Login
+      </button>
 
       <div className="login-footer">
-        <button type="button" className="cancelbtn">
-          Cancel
-        </button>
         <span className="forgot">
           Forgot <Link to="/">password?</Link>
         </span>
         <span className="signup">
-          <Link to="/signup">create acount</Link>
+          <Link to="/signup">you don't have account. Create new account?</Link>
         </span>
       </div>
     </Form>
@@ -64,21 +66,23 @@ class LoginContainer extends Component {
   };
 
   onSubmit = (values, actions) => {
-    const { context: { login } } = this;
+    const {
+      context: { login }
+    } = this;
     const { history } = this.props;
     const { login: loginLink } = apiLinks;
     const { email, password } = values;
-    
+
     axios
       .post(loginLink, { email, password })
-      .then((response) => {
+      .then(response => {
         const { data } = response;
         if (data && data.email) {
           login(data);
           if (history.length > HISTORY_LENGTH_FIRST_HIT) {
             history.goBack();
           } else {
-            history.push('/'); // push to root
+            history.push("/"); // push to root
           }
         } else {
           alert("email or password is wrong");
@@ -94,13 +98,12 @@ class LoginContainer extends Component {
   };
 
   render() {
-
     return (
       <Formik
         initialValues={this.initialValues}
         onSubmit={this.onSubmit}
         validationSchema={LoginValidation}
-        render={props => <LoginForm {...props}/>}
+        render={props => <LoginForm {...props} />}
       />
     );
   }
