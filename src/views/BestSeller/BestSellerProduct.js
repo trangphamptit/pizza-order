@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./BestSellerProduct.scss";
 import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../services/AppContext";
+import BestSeller from "./BestSeller";
 class Product extends Component {
   _renderSize(size) {
     // console.log("size", size);
@@ -14,21 +16,30 @@ class Product extends Component {
 
   render() {
     const { bestseller } = this.props;
-    console.log(bestseller);
-    const { _id, img, name, variantProducts } = bestseller;
+    // console.log(bestseller);
+    const { addToCart } = this.context;
+    const { _id, image, name, variantProducts } = bestseller;
     return (
       <div className="product col-xl-3 col-lg-3 col-md-3 col-sm-12">
         <div className="card ">
           <div className="img-container">
             <Link to={`/details/${_id}`}>
               <img
-                src={img ? img : product1}
+                src={image ? image : product1}
                 alt="product"
                 className="card-img-top"
               />
             </Link>
-            <Link to={`/details/${_id}`}>
-              <button className="cart-btn">
+            <Link to={`/cart`}>
+              <button
+                className="cart-btn"
+                onClick={() => {
+                  console.log(bestseller);
+                  bestseller.quantity = 1;
+                  bestseller.size = bestseller.variantProducts[0];
+                  addToCart(bestseller);
+                }}
+              >
                 <i className="fas fa-cart-plus" />
               </button>
             </Link>
@@ -46,5 +57,5 @@ class Product extends Component {
     );
   }
 }
-
+Product.contextType = AppContext;
 export default Product;

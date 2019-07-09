@@ -17,6 +17,7 @@ class AppProvider extends Component {
       cart: [],
       user: null,
       modalOpen: false,
+      orders: [],
 
       // cartSubTotal: 0,
       // cartTotal: 0,
@@ -109,6 +110,7 @@ class AppProvider extends Component {
       return { modalOpen: false };
     });
   };
+
   render() {
     return (
       <AppContext.Provider

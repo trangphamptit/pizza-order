@@ -12,9 +12,21 @@ class Header extends Component {
       element.checked = false;
     }
   }
-
+  getType(cart) {
+    let num = cart.reduce((numOfProduct, item) => {
+      if (item.type === "pizza") {
+        return numOfProduct + item.quantity;
+      } else {
+        return numOfProduct;
+      }
+    }, 0);
+    // console.log("type", type);
+    console.log("numOfProduct ", num);
+    return <span className="number-item"> {num}</span>;
+  }
   render() {
     const { user, cart, logout } = this.context;
+
     return (
       <div className="header-container col-12">
         <div className="menu-wrap">
@@ -82,7 +94,7 @@ class Header extends Component {
             <Link to="/cart">
               <i className="fas fa-cart-arrow-down" />
 
-              <span className="number-item"> {cart.length}</span>
+              {this.getType(cart)}
             </Link>
           </div>
         </div>

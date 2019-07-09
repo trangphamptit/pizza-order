@@ -58,7 +58,7 @@ class Details extends Component {
     const {
       _id,
       description,
-
+      image,
       name,
       price,
       variantProducts
@@ -71,7 +71,7 @@ class Details extends Component {
               <h1 className="name">{name}</h1>
               <p className="description">{description}</p>
               <div className="image">
-                <img src={product1} alt="" className="image" />
+                <img src={image ? image : product1} alt="" className="image" />
               </div>
             </div>
 
@@ -196,6 +196,10 @@ class Details extends Component {
                           orderDetails.push(topping);
                         });
                         value.addToCart(orderDetails);
+                        localStorage.setItem(
+                          "details",
+                          JSON.stringify(orderDetails)
+                        );
                       }}
                     >
                       add to cart
@@ -217,7 +221,7 @@ const FormikForm = withFormik({
   mapPropsToValues: () => {
     return {
       size: "",
-      crust: "normal",
+      crust: "",
       toppings: [],
       quantity: 1
     };
@@ -230,7 +234,6 @@ const FormikForm = withFormik({
   }),
 
   handleSubmit: (values, { props, state }) => {
-    console.log("values", values);
     props.history.push("/cart");
   }
 })(Details);

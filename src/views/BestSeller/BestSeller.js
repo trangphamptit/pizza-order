@@ -9,7 +9,7 @@ class BestSeller extends Component {
   }
   render() {
     const { bestsellers } = this.context;
-    console.log(this.context);
+    // console.log(this.context);
     return (
       <div className="bestseller">
         <div className="products-banner">

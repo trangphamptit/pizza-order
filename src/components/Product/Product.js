@@ -3,12 +3,14 @@ import "./Product.scss";
 import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
 import RatingProduct from "../Rating/RatingProduct";
+import { numberFormat } from "../CurrencyFormat";
+import { AppContext } from "../../services/AppContext";
 class Product extends Component {
   _renderSize(size) {
     // console.log("size", size);
     return (
       <div className="mr-1">
-        Size {size.value} - {size.price}
+        Size {size.value} - numberFormat({size.price})
       </div>
     );
   }
@@ -17,7 +19,7 @@ class Product extends Component {
     const { product } = this.props;
     // console.log(product);
     const { _id, image, name, description, variantProducts } = product;
-    console.log("product", product);
+    const { addToCart } = this.context;
     return (
       <div className="product col-xl-3 col-lg-3 col-md-3 col-sm-12">
         <div className="card ">
@@ -30,7 +32,15 @@ class Product extends Component {
               />
             </Link>
             <Link to="/cart">
-              <button className="cart-btn">
+              <button
+                className="cart-btn"
+                onClick={() => {
+                  console.log(product);
+                  product.quantity = 1;
+                  product.size = product.variantProducts[0];
+                  addToCart(product);
+                }}
+              >
                 <i className="fas fa-cart-plus" />
               </button>
             </Link>
@@ -49,5 +59,7 @@ class Product extends Component {
     );
   }
 }
+
+Product.contextType = AppContext;
 
 export default Product;
