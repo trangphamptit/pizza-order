@@ -61,13 +61,13 @@ class Signup extends Component {
         </div>
 
         <div className="signup-footer">
-          <button type="submit" onClick={this.props.handleSubmit}>
+          <button
+            className="btn btn-outline-danger text-uppercase mb-3 px-5 m-auto"
+            type="submit"
+            onClick={this.props.handleSubmit}
+          >
             {" "}
             Submit{" "}
-          </button>
-
-          <button type="submit" className="cancelbtn">
-            Cancel
           </button>
         </div>
       </Form>
