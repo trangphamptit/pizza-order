@@ -1,8 +1,9 @@
 .mainpage {
-  background-color: rgb(95, 106, 117);
+  // background-color: tomato;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: rgb(106, 165, 165);
 }
 section {
   min-height: calc(100vh - 100px);

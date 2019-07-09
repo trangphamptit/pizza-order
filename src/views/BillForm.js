@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { AppContext } from "../services/AppContext";
 import { apiLinks } from "../services/APILinks";
 import axios from "axios";
+import Modal from "../components/Modal/Modal";
 class BillForm extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +20,7 @@ class BillForm extends Component {
     const getLocal = this.getFromLocal();
   }
   createOrder = () => {
-    const { cart, clearCart } = this.context;
+    const { cart, clearCart, openModal } = this.context;
     console.log("cart", cart);
     let orders = cart.map(item => {
       let orderDetail = {
@@ -51,7 +52,7 @@ class BillForm extends Component {
         console.log(response.data.message);
         if (response.data && response.data.message) {
           clearCart();
-          alert("Your order is successful. Thank you!");
+          openModal();
         } else {
           alert("Can't create order. Please try again");
         }
@@ -72,118 +73,125 @@ class BillForm extends Component {
 
           // console.log("values", value.getTotal);
           return (
-            <div className="container">
-              <div className="card">
-                <div className="card-header text-capitalize">
-                  Bill
-                  <span className="float-right">
-                    {" "}
-                    <strong>Status:</strong>Shipping
-                  </span>
-                </div>
-                <div className="card-body">
-                  <div className="row mb-4">
-                    <div className="col-sm-6">
-                      <h6 className="mb-3">From:</h6>
-                      <div>
-                        <strong>Pizza</strong>
+            <React.Fragment>
+              <Modal />
+              <div className="container">
+                <div className="card" style={{ marginBottom: "15px" }}>
+                  <div className="card-header text-capitalize">
+                    Bill
+                    <span className="float-right">
+                      {" "}
+                      <strong>Status:</strong>Shipping
+                    </span>
+                  </div>
+                  <div className="card-body">
+                    <div className="row mb-4">
+                      <div className="col-sm-6">
+                        <h6 className="mb-3">From:</h6>
+                        <div>
+                          <strong>Pizza</strong>
+                        </div>
+                        <div>Address: </div>
+                        <div>
+                          97 Man Thiên, phường Hiệp Phú, quận 9, Thành phố Hồ
+                          Chí Minh
+                        </div>
+                        <div>Email: info@webz.com.pl</div>
+                        <div>Phone: +48 444 666 3333</div>
                       </div>
-                      <div>Address: </div>
-                      <div>
-                        97 Man Thiên, phường Hiệp Phú, quận 9, Thành phố Hồ Chí
-                        Minh
-                      </div>
-                      <div>Email: info@webz.com.pl</div>
-                      <div>Phone: +48 444 666 3333</div>
-                    </div>
-                    <div className="col-sm-6">
-                      <h6 className="mb-3">To:</h6>
+                      <div className="col-sm-6">
+                        <h6 className="mb-3">To:</h6>
 
-                      <div>
-                        <strong>{this.state.user.name}</strong>
+                        <div>
+                          <strong>{this.state.user.name}</strong>
+                        </div>
+                        <div>Address: </div>
+                        <div>
+                          {this.state.deliveryinfor.district}-
+                          {this.state.deliveryinfor.streetname}-
+                          {this.state.deliveryinfor.housenumber}
+                        </div>
+                        <div>Email: {this.state.user.email}</div>
+                        <div>Phone:{this.state.user.phone}</div>
                       </div>
-                      <div>Address: </div>
-                      <div>
-                        {this.state.deliveryinfor.district}-
-                        {this.state.deliveryinfor.streetname}-
-                        {this.state.deliveryinfor.housenumber}
-                      </div>
-                      <div>Email: {this.state.user.email}</div>
-                      <div>Phone:{this.state.user.phone}</div>
                     </div>
-                  </div>
-                  <div className="table-responsive-sm">
-                    <table className="table table-striped">
-                      <thead>
-                        <tr>
-                          <th className="center">number</th>
-                          <th>product name</th>
-                          <th>description</th>
-                          <th className="right">price</th>
-                          <th className="center">count</th>
-                          <th className="right">total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {value.cart.map((item, index) => (
-                          <tr key={index}>
-                            <td className="center">{index}</td>
-                            <td className="left strong">{item.name}</td>
-                            <td className="left">
-                              {item.size && item.size.value}
-                            </td>
-                            <td className="right">
-                              {item.size ? item.size.price : item.price}
-                            </td>
-                            <td className="center">{item.quantity}</td>
-                            <td className="right">
-                              {item.size
-                                ? item.size.price * item.quantity
-                                : item.price * item.quantity}
-                            </td>
+                    <div className="table-responsive-sm">
+                      <table className="table table-striped">
+                        <thead>
+                          <tr>
+                            <th className="center">number</th>
+                            <th>product name</th>
+                            <th>description</th>
+                            <th className="right">price</th>
+                            <th className="center">count</th>
+                            <th className="right">total</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-4 col-sm-5" />
-                    <div className="col-lg-4 col-sm-5 ml-auto">
-                      <table className="table table-clear">
+                        </thead>
                         <tbody>
-                          <tr>
-                            <td className="left">
-                              <strong>Total</strong>
-                            </td>
-                            <td className="right">{total}</td>
-                          </tr>
-
-                          <tr>
-                            <td className="left">
-                              <strong>Shipping fee</strong>
-                            </td>
-                            <td className="right">1 $ </td>
-                          </tr>
-                          <tr>
-                            <td className="left">
-                              <strong>Bill</strong>
-                            </td>
-                            <td className="right">
-                              <strong>{total + 1}$</strong>
-                            </td>
-                          </tr>
+                          {value.cart.map((item, index) => (
+                            <tr key={index}>
+                              <td className="center">{index}</td>
+                              <td className="left strong">{item.name}</td>
+                              <td className="left">
+                                {item.size && item.size.value}
+                              </td>
+                              <td className="right">
+                                {item.size ? item.size.price : item.price}
+                              </td>
+                              <td className="center">{item.quantity}</td>
+                              <td className="right">
+                                {item.size
+                                  ? item.size.price * item.quantity
+                                  : item.price * item.quantity}
+                              </td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </div>
+                    <div className="row">
+                      <div className="col-lg-4 col-sm-5" />
+                      <div className="col-lg-4 col-sm-5 ml-auto">
+                        <table className="table table-clear">
+                          <tbody>
+                            <tr>
+                              <td className="left">
+                                <strong>Total</strong>
+                              </td>
+                              <td className="right">{total}</td>
+                            </tr>
+
+                            <tr>
+                              <td className="left">
+                                <strong>Shipping fee</strong>
+                              </td>
+                              <td className="right">1 $ </td>
+                            </tr>
+                            <tr>
+                              <td className="left">
+                                <strong>Bill</strong>
+                              </td>
+                              <td className="right">
+                                <strong>{total + 1}$</strong>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                <div>
+                  <button
+                    className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                    type="submit"
+                    onClick={this.createOrder}
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
-              <div>
-                <button type="submit" onClick={this.createOrder}>
-                  Submit
-                </button>
-              </div>
-            </div>
+            </React.Fragment>
           );
         }}
       </AppContext.Consumer>

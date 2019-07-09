@@ -3,6 +3,7 @@ import { getProducts } from "./products";
 import { getCategories } from "./categories";
 import { getBestsellers } from "./bestseller";
 import { getProductscategory } from "./productscategory";
+import { getOrdersCustomer } from "./getorderscustomer";
 export const AppContext = React.createContext();
 class AppProvider extends Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class AppProvider extends Component {
       productscategory: [],
       cart: [],
       user: null,
+      modalOpen: false,
+
       // cartSubTotal: 0,
       // cartTotal: 0,
       // total: 0,
@@ -34,6 +37,10 @@ class AppProvider extends Component {
       getProductscategory: async id => {
         const productscategory = await getProductscategory(id);
         this.setState({ productscategory });
+      },
+      getOrdersCustomer: async customerID => {
+        const orders = await getOrdersCustomer(customerID);
+        this.setState({ orders });
       }
     };
   }
@@ -91,7 +98,17 @@ class AppProvider extends Component {
     tempCart[index].quantity -= 1;
     this.setState({ cart: [...tempCart] });
   };
+  openModal = () => {
+    this.setState(() => {
+      return { modalOpen: true };
+    });
+  };
 
+  closeModal = () => {
+    this.setState(() => {
+      return { modalOpen: false };
+    });
+  };
   render() {
     return (
       <AppContext.Provider
@@ -104,7 +121,9 @@ class AppProvider extends Component {
           login: this.login,
           logout: this.logout,
           increment: this.increment,
-          decrement: this.decrement
+          decrement: this.decrement,
+          openModal: this.openModal,
+          closeModal: this.closeModal
         }}
       >
         {this.props.children}

@@ -20,6 +20,8 @@ import VisaForm from "./views/Payment/VisaForm";
 import AppProvider from "./services/AppContext";
 import ProductsCategory from "./views/ProductsCategory/ProductsCategory";
 import About from "./views/About/About";
+import OrdersCustomer from "./views/OrdersCustomer/OrdersCustomer";
+
 class App extends Component {
   render() {
     return (
@@ -43,6 +45,7 @@ class App extends Component {
                 <Route path="/delivery" component={Delivery} />
                 <Route path="/choosepayment" component={ChoosePayment} />
                 <Route path="/visaform" component={VisaForm} />
+                <Route path="/orders" component={OrdersCustomer} />
                 <Route
                   path="/productscategory/:id"
                   component={ProductsCategory}
