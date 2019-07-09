@@ -19,7 +19,7 @@ class OrdersCustomer extends Component {
         console.log("err");
       }
       const { data } = await Axios.get(
-        `http://pizza-products.herokuapp.com/toppings`
+        `https://pizza-products-api.glitch.me/toppings`
       );
       this.setState({ toppings: data });
     }, 1000);

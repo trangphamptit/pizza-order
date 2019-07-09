@@ -4,12 +4,13 @@ import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../services/AppContext";
 import BestSeller from "./BestSeller";
+import { numberFormat } from "../../components/CurrencyFormat";
 class Product extends Component {
   _renderSize(size) {
     // console.log("size", size);
     return (
       <div className="mr-1">
-        Size {size.value} - {size.price}
+        Size {size.value} - {numberFormat(size.price)}
       </div>
     );
   }

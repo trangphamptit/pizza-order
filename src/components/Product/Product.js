@@ -10,7 +10,7 @@ class Product extends Component {
     // console.log("size", size);
     return (
       <div className="mr-1">
-        Size {size.value} - numberFormat({size.price})
+        Size {size.value} -{numberFormat(size.price)}
       </div>
     );
   }

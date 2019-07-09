@@ -17,7 +17,7 @@ class Details extends Component {
   async componentDidMount() {
     try {
       const { data } = await Axios.get(
-        `http://pizza-products.herokuapp.com/pizzas/${this.state.id}`
+        `https://pizza-products-api.glitch.me/pizzas/${this.state.id}`
       );
       this.setState({ details: data });
     } catch (err) {
@@ -25,7 +25,7 @@ class Details extends Component {
     }
     try {
       const { data } = await Axios.get(
-        `http://pizza-products.herokuapp.com/toppings`
+        `https://pizza-products-api.glitch.me/toppings`
       );
       this.setState({ toppings: data });
     } catch (err) {
