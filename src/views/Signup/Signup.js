@@ -62,7 +62,7 @@ class Signup extends Component {
 
         <div className="signup-footer">
           <button
-            className="btn btn-outline-danger text-uppercase mb-3 px-5 m-auto"
+            className="btn btn-danger text-uppercase mb-3 px-5 m-auto"
             type="submit"
             onClick={this.props.handleSubmit}
           >

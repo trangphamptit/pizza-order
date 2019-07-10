@@ -48,12 +48,12 @@ const LoginForm = props => {
       </button>
 
       <div className="login-footer">
-        <span className="forgot">
-          Forgot <Link to="/">password?</Link>
-        </span>
-        <span className="signup">
-          <Link to="/signup"> Create new account?</Link>
-        </span>
+        <Link to="/">
+          <span className="forgot">Forgot password?</span>
+        </Link>
+        <Link to="/signup">
+          <span className="signup"> Create new account?</span>
+        </Link>
       </div>
     </Form>
   );
