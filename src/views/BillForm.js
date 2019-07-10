@@ -184,7 +184,7 @@ class BillForm extends Component {
                 </div>
                 <div>
                   <button
-                    className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                    className="btn btn-danger text-uppercase mb-3 px-5"
                     type="submit"
                     onClick={this.createOrder}
                   >

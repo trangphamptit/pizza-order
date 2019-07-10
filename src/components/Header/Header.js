@@ -21,7 +21,7 @@ class Header extends Component {
       }
     }, 0);
     // console.log("type", type);
-    console.log("numOfProduct ", num);
+    // console.log("numOfProduct ", num);
     return <span className="number-item"> {num}</span>;
   }
   render() {

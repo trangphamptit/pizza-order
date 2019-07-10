@@ -29,7 +29,7 @@ class Modal extends Component {
 
                     <Link to="/">
                       <button
-                        className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                        className="btn btn-danger text-uppercase mb-3 px-5"
                         onClick={() => closeModal()}
                       >
                         home
@@ -37,7 +37,7 @@ class Modal extends Component {
                     </Link>
                     <Link to="/orders">
                       <button
-                        className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                        className="btn btn-danger text-uppercase mb-3 px-5"
                         onClick={() => closeModal()}
                       >
                         orders history

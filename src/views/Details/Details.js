@@ -170,7 +170,7 @@ class Details extends Component {
                   {value => (
                     <button
                       type="submit"
-                      className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                      className="btn btn-danger text-uppercase mb-3 px-5"
                       onClick={() => {
                         let orderDetails = [];
 

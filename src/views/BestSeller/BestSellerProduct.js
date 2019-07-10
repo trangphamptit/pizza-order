@@ -34,7 +34,7 @@ class Product extends Component {
               <button
                 className="cart-btn"
                 onClick={() => {
-                  console.log(bestseller);
+                  // console.log(bestseller);
                   bestseller.quantity = 1;
                   bestseller.size = bestseller.variantProducts[0];
                   addToCart(bestseller);
