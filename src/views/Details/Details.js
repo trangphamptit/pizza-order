@@ -61,7 +61,8 @@ class Details extends Component {
       description,
       image,
       name,
-      variantProducts
+      variantProducts,
+      discountAmount
     } = this.state.details;
     if (_id) {
       return (
@@ -92,7 +93,8 @@ class Details extends Component {
                           id={variant.value}
                         />
                         <label htmlFor={variant.value}>
-                          {variant.value}-{numberFormat(variant.price)}
+                          {variant.value}-
+                          {numberFormat(variant.price - discountAmount)}
                         </label>
                       </div>
                     );

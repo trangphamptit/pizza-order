@@ -52,7 +52,7 @@ const LoginForm = props => {
           Forgot <Link to="/">password?</Link>
         </span>
         <span className="signup">
-          <Link to="/signup">you don't have account. Create new account?</Link>
+          <Link to="/signup"> Create new account?</Link>
         </span>
       </div>
     </Form>

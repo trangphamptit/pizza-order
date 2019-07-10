@@ -67,7 +67,7 @@ class Signup extends Component {
             onClick={this.props.handleSubmit}
           >
             {" "}
-            Submit{" "}
+            SIGN UP{" "}
           </button>
         </div>
       </Form>

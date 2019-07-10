@@ -40,7 +40,7 @@ class BillForm extends Component {
 
     // console.log(orders);
 
-    console.log("id", this.state.user._id);
+    // console.log("id", this.state.user._id);
 
     let ordersLink = apiLinks.orders;
 

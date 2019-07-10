@@ -56,13 +56,13 @@ class AppProvider extends Component {
     this.setState({
       cart: this.state.cart.concat(product)
     });
-    console.log("cart", this.state.cart);
+    // console.log("cart", this.state.cart);
   };
   getTotal = cart => {
     let _total = 0;
     cart.map(item => {
       if (item.size) {
-        _total += item.size.price * item.quantity;
+        _total += (item.size.price - item.discountAmount) * item.quantity;
       } else {
         _total += item.price * item.quantity;
       }
@@ -76,7 +76,7 @@ class AppProvider extends Component {
   removeItem = _id => {
     let tempCart = this.state.cart.filter(item => item._id !== _id);
     this.setState({ cart: tempCart });
-    console.log("hello");
+    // console.log("hello");
   };
   componentDidMount = async () => {
     const user = await localStorage.getItem("user");

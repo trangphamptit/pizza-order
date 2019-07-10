@@ -1,7 +1,14 @@
 import React from "react";
 import { AppContext } from "../../services/AppContext";
-
+import { numberFormat } from "../../components/CurrencyFormat";
 export default function CartItem({ item, value }) {
+  let total = 0;
+
+  if (item.type === "pizza") {
+    total = item.quantity * item.size.price;
+  } else {
+    total = item.quantity * item.price;
+  }
   return (
     <AppContext.Consumer>
       {value => (
@@ -10,9 +17,14 @@ export default function CartItem({ item, value }) {
 
           <td> {item.size && item.size.value}</td>
 
-          <td> {item.size ? item.size.price : item.price}</td>
+          <td>
+            {" "}
+            {numberFormat(
+              item.size ? item.size.price - item.discountAmount : item.price
+            )}
+          </td>
 
-          <td className="d-inline ">
+          <td className="d-flex ">
             <button
               className="btn btn-dark mx-1"
               onClick={() => value.decrement(item)}
@@ -29,12 +41,7 @@ export default function CartItem({ item, value }) {
             </button>
           </td>
 
-          <td>
-            {" "}
-            {item.size
-              ? item.quantity * item.size.price
-              : item.quantity * item.price}
-          </td>
+          <td> {numberFormat(total)}</td>
 
           <td className="cart-icon" onClick={() => value.removeItem(item._id)}>
             <i className="fas fa-trash" style={{ color: "yellow" }} />

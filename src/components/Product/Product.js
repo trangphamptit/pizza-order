@@ -18,7 +18,14 @@ class Product extends Component {
   render() {
     const { product } = this.props;
     // console.log(product);
-    const { _id, image, name, description, variantProducts } = product;
+    const {
+      _id,
+      image,
+      name,
+      description,
+      variantProducts,
+      discountAmount
+    } = product;
     const { addToCart } = this.context;
     return (
       <div className="product col-xl-3 col-lg-3 col-md-3 col-sm-12">
@@ -53,6 +60,7 @@ class Product extends Component {
               variantProducts[0] &&
               this._renderSize(variantProducts[0])}
           </h5>
+          <h5 className="product-price ">{discountAmount}</h5>
         </div>
         {/* <RatingProduct /> */}
       </div>

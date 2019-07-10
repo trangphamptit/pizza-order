@@ -12,7 +12,7 @@ class OrdersCustomer extends Component {
   componentDidMount() {
     setTimeout(async () => {
       let { user } = this.context;
-      console.log("user", user);
+      // console.log("user", user);
       if (user) {
         await this.context.getOrdersCustomer(user._id);
       } else {
