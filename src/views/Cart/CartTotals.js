@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
-import BillForm from "../BillForm";
-import { AppContext } from "../../services/AppContext";
+import { numberFormat } from "../../components/CurrencyFormat";
 export default class CartTotals extends Component {
   constructor(props) {
     super(props);
@@ -36,17 +34,17 @@ export default class CartTotals extends Component {
           {/* </div> */}
           <h5>
             <span className="text-title">total:</span>
-            <strong>{this.props.total} $</strong>
+            <strong>{numberFormat(this.props.total)} </strong>
           </h5>
 
           <h5>
             <span className="text-title">shipping fee:</span>
-            <strong>1$</strong>
+            <strong>{numberFormat(1)}</strong>
           </h5>
 
           <h5>
             <span className="text-title">Bill:</span>
-            <strong>{this.props.total + 1}$</strong>
+            <strong>{numberFormat(this.props.total + 1)}</strong>
           </h5>
           <button
             className="btn btn-outline-danger text-uppercase mb-3 px-5"

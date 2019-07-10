@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Modal.scss";
 import { AppContext } from "../../services/AppContext";
 import { Link } from "react-router-dom";
+import success from "../../image/success.png";
 class Modal extends Component {
   render() {
     return (
@@ -19,15 +20,29 @@ class Modal extends Component {
                     className="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize"
                   >
                     <h5>your order is successful</h5>
-                    {/* <img src={img} className="img-fluid" alt="product" /> */}
+                    <img
+                      style={{ marginBottom: "15px" }}
+                      src={success}
+                      className="img-fluid"
+                      alt="success"
+                    />
                     {/* <h5>{title}</h5> */}
                     {/* <h5 className="text-muted">giá: $ {price}</h5> */}
+
                     <Link to="/">
-                      <button onClick={() => closeModal()}>back to home</button>
+                      <button
+                        className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                        onClick={() => closeModal()}
+                      >
+                        home
+                      </button>
                     </Link>
                     <Link to="/orders">
-                      <button onClick={() => closeModal()}>
-                        go to orders history
+                      <button
+                        className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                        onClick={() => closeModal()}
+                      >
+                        orders history
                       </button>
                     </Link>
                   </div>

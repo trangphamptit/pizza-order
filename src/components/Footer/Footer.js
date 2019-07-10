@@ -6,37 +6,42 @@ class Footer extends Component {
   render() {
     return (
       // <div className="container-fluid">
-      <footer className=" footer col-12">
-        <div className="footer-container row ">
-          <ul className="footer-left col-6">
-            <li>
-              <span>
-                <i class="fas fa-at" /> Pizza T&T
-              </span>
-            </li>
-            <li>
-              <Link to="/">policy</Link>
-            </li>
-            <li className="last">
-              <Link to="/">security</Link>
-            </li>
+      <footer className=" footer-container col-12">
+        <div className="footer-left ">
+          <label
+            className="introduce"
+            style={{ textAlign: "center", marginRight: "15px" }}
+          >
+            <i className="far fa-copyright" />
+            <span>T & T Pizza</span>
+          </label>
+          <ul className="about-us">
+            <Link to="/aboutus">
+              <li>Terms of Use</li>
+            </Link>
+            <Link to="/aboutus">
+              <li className="last">Policy</li>
+            </Link>
           </ul>
-          <div className="footer-right col-6">
-            <div className="footerphone">
-              <strong>HOTLINE</strong>
-              <span style={{ color: "red", fontWeight: "bold" }}>
-                {" "}
-                09090909
-              </span>
-            </div>
-            <li>
-              <i class="fab fa-facebook-f" />
-            </li>
-            <li>
-              <i class="fab fa-youtube" />
-            </li>
-          </div>
         </div>
+
+        <ul className="footer-right">
+          <li>
+            <a href="#">
+              <i className="fab fa-facebook-f" />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i className="fab fa-linkedin-in" />
+            </a>
+          </li>
+          <li className="last">
+            <a href="#">
+              <i className="fab fa-youtube" />
+            </a>
+          </li>
+        </ul>
       </footer>
       // </div>
     );

@@ -102,7 +102,7 @@ const FormikForm = withFormik({
     };
   },
 
-  handleSubmit: (values, { setSubmitting }) => {
+  handleSubmit: (values, { props, setSubmitting }) => {
     // console.log("Submitted username:", values);
 
     let signupLink = apiLinks.signup;
@@ -118,14 +118,14 @@ const FormikForm = withFormik({
       .then(function(response) {
         console.log(response);
         if (response.data && response.data.email) {
-          this.props.history.goBack();
-          alert("Authenticated");
+          props.history.goBack();
+          alert("Sign up successfully");
         } else {
           alert("Error on Authentication");
         }
       })
       .catch(function(error) {
-        console.log("Error on Authentication");
+        console.log("Error");
       });
     // Simulates the delay of a real request
     setTimeout(() => setSubmitting(false), 3 * 1000);

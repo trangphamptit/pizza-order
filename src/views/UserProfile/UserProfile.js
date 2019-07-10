@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./UserProfile.scss";
-import Tabs from "./Tabs";
-import userimg from "../../image/userimg.jpg";
+
+import useraccount from "../../image/useraccount.jpg";
 import { AppContext } from "../../services/AppContext";
 class UserProfile extends Component {
   render() {
@@ -14,19 +14,16 @@ class UserProfile extends Component {
 
     if (user) {
       return (
-        <div className="profile col-10">
-          <Tabs>
-            <div label="your profile">
-              <img className="user-img" src={userimg} alt="user" />
-              <h4>user name</h4>
-              <label className="name">{user.name}</label>
-              <h4>email</h4>
-              <label className="email">{user.email}</label>
-              <h4>phone number</h4>
-              <label className="phone">{user.phone}</label>
-            </div>
-            <div label="order history">your orders</div>
-          </Tabs>
+        <div className="profile col-8">
+          <div label="your profile">
+            <img className="user-img" src={useraccount} alt="user" />
+            <h4>user name</h4>
+            <label className="name">{user.name}</label>
+            <h4>email</h4>
+            <label className="email">{user.email}</label>
+            <h4>phone number</h4>
+            <label className="phone">{user.phone}</label>
+          </div>
         </div>
       );
     } else {

@@ -1,51 +1,67 @@
-.footer {
+.footer-container {
+  border-top: 1px solid grey;
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+  left: 0px;
+  bottom: 0px;
+  position: fixed;
   background-color: black;
   opacity: 0.8;
-  width: 100%;
-  color: white;
-  margin-top: 15px;
-  .footer-container {
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    .footer-left {
-      margin: 0;
-      display: flex;
-      align-items: center;
-      li {
-        margin-right: 10px;
-        padding-right: 10px;
-        border-right: 0.5px solid white;
 
-        a {
-          color: white;
-        }
+  align-items: center;
+  .footer-left {
+    display: flex;
+    .about-us {
+      display: flex;
+      li {
+        color: white;
+        margin-right: 10px;
+        display: inline-block;
+        margin-right: 10px;
+        border-right: 1px solid gray;
+        padding-right: 5px;
       }
-      li.last {
+      .last {
         border-right: none;
       }
     }
-    .footer-right {
-      color: white;
-      display: flex;
-      align-items: center;
-      .footerphone {
-        margin-right: 30px;
-      }
-      li {
-        margin-right: 30px;
-        padding: 5px;
-        background-color: white;
-        width: 30px;
-        height: 30px;
-        color: black;
-        border-radius: 5px;
-      }
-      li:hover {
-        color: blue;
-        background-color: unset;
-        border: 1px solid white;
-      }
-    }
+  }
+  .footer-right {
+    justify-content: flex-end;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+  }
+}
+.about-us {
+}
+
+.fab {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 15px;
+  border: 1px solid grey;
+  color: white;
+}
+.fa-facebook-f {
+  background-color: blue;
+}
+.fa-linkedin-in {
+  background-color: rgb(0, 153, 255);
+}
+.fa-youtube {
+  background-color: red;
+}
+@media only screen and (max-width: 530px) {
+  .footer-left {
+    display: none;
+  }
+  .footer-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

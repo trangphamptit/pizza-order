@@ -3,6 +3,7 @@ import { AppContext } from "../services/AppContext";
 import { apiLinks } from "../services/APILinks";
 import axios from "axios";
 import Modal from "../components/Modal/Modal";
+import { numberFormat } from "../components/CurrencyFormat";
 class BillForm extends Component {
   constructor(props) {
     super(props);
@@ -158,21 +159,21 @@ class BillForm extends Component {
                               <td className="left">
                                 <strong>Total</strong>
                               </td>
-                              <td className="right">{total}</td>
+                              <td className="right">{numberFormat(total)}</td>
                             </tr>
 
                             <tr>
                               <td className="left">
                                 <strong>Shipping fee</strong>
                               </td>
-                              <td className="right">1 $ </td>
+                              <td className="right">{numberFormat(1)} </td>
                             </tr>
                             <tr>
                               <td className="left">
                                 <strong>Bill</strong>
                               </td>
                               <td className="right">
-                                <strong>{total + 1}$</strong>
+                                <strong>{numberFormat(total + 1)}</strong>
                               </td>
                             </tr>
                           </tbody>

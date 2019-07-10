@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Product.scss";
 import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
-import RatingProduct from "../Rating/RatingProduct";
+// import RatingProduct from "../Rating/RatingProduct";
 import { numberFormat } from "../CurrencyFormat";
 import { AppContext } from "../../services/AppContext";
 class Product extends Component {

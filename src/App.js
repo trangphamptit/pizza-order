@@ -15,7 +15,7 @@ import BillForm from "./views/BillForm.js";
 import Login from "./views/Login/Login";
 import Signup from "./views/Signup/Signup";
 import Delivery from "./views/Delivery/Delivery";
-import ChoosePayment from "./views/Payment/ChoosePayment";
+
 import VisaForm from "./views/Payment/VisaForm";
 import AppProvider from "./services/AppContext";
 import ProductsCategory from "./views/ProductsCategory/ProductsCategory";
@@ -43,7 +43,7 @@ class App extends Component {
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/delivery" component={Delivery} />
-                <Route path="/choosepayment" component={ChoosePayment} />
+
                 <Route path="/visaform" component={VisaForm} />
                 <Route path="/orders" component={OrdersCustomer} />
                 <Route
