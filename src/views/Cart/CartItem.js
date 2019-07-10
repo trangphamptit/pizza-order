@@ -22,21 +22,23 @@ export default function CartItem({ item, value }) {
             {item.size ? item.size.price - item.discountAmount : item.price}
           </td>
 
-          <td className="d-flex ">
-            <button
-              className="btn btn-dark mx-1"
-              onClick={() => value.decrement(item)}
-              disabled={item.quantity === 1}
-            >
-              -
-            </button>
-            <button className="btn btn-dark mx-1"> {item.quantity}</button>
-            <button
-              className="btn btn-dark mx-1"
-              onClick={() => value.increment(item)}
-            >
-              +
-            </button>
+          <td>
+            <div className="d-flex ">
+              <button
+                className="btn btn-dark mx-1"
+                onClick={() => value.decrement(item)}
+                disabled={item.quantity === 1}
+              >
+                -
+              </button>
+              <button className="btn btn-dark mx-1"> {item.quantity}</button>
+              <button
+                className="btn btn-dark mx-1"
+                onClick={() => value.increment(item)}
+              >
+                +
+              </button>
+            </div>
           </td>
 
           <td>$ {total}</td>

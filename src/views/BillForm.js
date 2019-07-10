@@ -3,7 +3,7 @@ import { AppContext } from "../services/AppContext";
 import { apiLinks } from "../services/APILinks";
 import axios from "axios";
 import Modal from "../components/Modal/Modal";
-
+import "./BillForm.scss";
 class BillForm extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ class BillForm extends Component {
   }
   createOrder = () => {
     const { cart, clearCart, openModal } = this.context;
-    console.log("cart", cart);
+    // console.log("cart", cart);
     let orders = cart.map(item => {
       let orderDetail = {
         productID: item._id,
@@ -76,7 +76,7 @@ class BillForm extends Component {
           return (
             <React.Fragment>
               <Modal />
-              <div className="container">
+              <div className="bill container">
                 <div className="card" style={{ marginBottom: "15px" }}>
                   <div className="card-header text-capitalize">
                     Bill

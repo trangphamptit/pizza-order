@@ -10,7 +10,7 @@ class Product extends Component {
     // console.log("size", size);
     return (
       <div className="mr-1">
-        Size {size.value} -{size.price}
+        Size {size.value} - $ {size.price}
       </div>
     );
   }
@@ -22,7 +22,7 @@ class Product extends Component {
       _id,
       image,
       name,
-      description,
+
       variantProducts,
       discountAmount
     } = product;
@@ -42,7 +42,7 @@ class Product extends Component {
               <button
                 className="cart-btn"
                 onClick={() => {
-                  console.log(product);
+                  // console.log(product);
                   product.quantity = 1;
                   product.size = product.variantProducts[0];
                   addToCart(product);

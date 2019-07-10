@@ -24,17 +24,17 @@ export default class CartTotals extends Component {
           >
             <li>
               <span>total : </span>
-              <strong>{this.props.total} </strong>
+              <span>$ {this.props.total} </span>
             </li>
 
             <li>
               <span>shipping fee : </span>
-              <strong>$ 1</strong>
+              <span>$ 1</span>
             </li>
 
             <li className=" text-capitalize">
               <span>BILL : </span>
-              <strong>$ {this.props.total + 1}</strong>
+              <span>$ {this.props.total + 1}</span>
             </li>
           </ul>
         </div>
