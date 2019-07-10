@@ -27,7 +27,7 @@ class OrdersCustomer extends Component {
   render() {
     let { orders, products, user } = this.context;
     let { toppings } = this.state;
-    console.log(products);
+    // console.log(products);
     if (user && products.length > 0) {
       return (
         <div className="container">

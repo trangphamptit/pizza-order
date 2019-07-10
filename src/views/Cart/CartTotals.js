@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { numberFormat } from "../../components/CurrencyFormat";
+
 export default class CartTotals extends Component {
   checkLogin = () => {
     console.log(this.props.history);
@@ -24,17 +24,17 @@ export default class CartTotals extends Component {
           >
             <li>
               <span>total : </span>
-              <strong>{numberFormat(this.props.total)} </strong>
+              <strong>{this.props.total} </strong>
             </li>
 
             <li>
               <span>shipping fee : </span>
-              <strong>{numberFormat(1)}</strong>
+              <strong>$ 1</strong>
             </li>
 
             <li className=" text-capitalize">
               <span>BILL : </span>
-              <strong>{numberFormat(this.props.total + 1)}</strong>
+              <strong>$ {this.props.total + 1}</strong>
             </li>
           </ul>
         </div>

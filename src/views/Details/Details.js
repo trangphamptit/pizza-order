@@ -5,7 +5,7 @@ import Axios from "axios";
 import { Form, withFormik } from "formik";
 import * as yup from "yup";
 import { AppContext } from "../../services/AppContext";
-import { numberFormat } from "../../components/CurrencyFormat";
+
 class Details extends Component {
   constructor(props) {
     super(props);
@@ -93,8 +93,7 @@ class Details extends Component {
                           id={variant.value}
                         />
                         <label htmlFor={variant.value}>
-                          {variant.value}-
-                          {numberFormat(variant.price - discountAmount)}
+                          {variant.value}- $ {variant.price - discountAmount}
                         </label>
                       </div>
                     );

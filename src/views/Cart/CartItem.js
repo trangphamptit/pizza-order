@@ -1,6 +1,6 @@
 import React from "react";
 import { AppContext } from "../../services/AppContext";
-import { numberFormat } from "../../components/CurrencyFormat";
+
 export default function CartItem({ item, value }) {
   let total = 0;
 
@@ -19,9 +19,7 @@ export default function CartItem({ item, value }) {
 
           <td>
             {" "}
-            {numberFormat(
-              item.size ? item.size.price - item.discountAmount : item.price
-            )}
+            {item.size ? item.size.price - item.discountAmount : item.price}
           </td>
 
           <td className="d-flex ">
@@ -41,7 +39,7 @@ export default function CartItem({ item, value }) {
             </button>
           </td>
 
-          <td> {numberFormat(total)}</td>
+          <td>$ {total}</td>
 
           <td className="cart-icon" onClick={() => value.removeItem(item._id)}>
             <i className="fas fa-trash" style={{ color: "yellow" }} />

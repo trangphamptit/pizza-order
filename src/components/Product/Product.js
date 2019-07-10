@@ -3,14 +3,14 @@ import "./Product.scss";
 import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
 // import RatingProduct from "../Rating/RatingProduct";
-import { numberFormat } from "../CurrencyFormat";
+
 import { AppContext } from "../../services/AppContext";
 class Product extends Component {
   _renderSize(size) {
     // console.log("size", size);
     return (
       <div className="mr-1">
-        Size {size.value} -{numberFormat(size.price)}
+        Size {size.value} -{size.price}
       </div>
     );
   }
