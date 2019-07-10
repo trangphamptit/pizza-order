@@ -63,7 +63,6 @@ class Delivery extends Component {
               name="payment"
               value="delivery"
               id="delivery"
-              checked
               onChange={this.props.handleChange}
             />{" "}
             <label htmlFor="delivery">
