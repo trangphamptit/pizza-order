@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import ListCategory from "../ListCategory/ListCategory";
 import BestSellerProduct from "../BestSeller/BestSellerProduct";
 import Product from "../../components/Product/Product";
-// import BestSeller from "../BestSeller/BestSeller";
 
 import { AppContext } from "../../services/AppContext";
 class Home extends Component {
@@ -24,7 +23,9 @@ class Home extends Component {
 
           <Link to="/bestseller">
             {" "}
-            <span>view more >> </span>
+            <button className="btn btn-outline-danger px-2 mx-15">
+              view more >>{" "}
+            </button>
           </Link>
         </div>
 
@@ -48,17 +49,21 @@ class Home extends Component {
 
           <Link to="/listcategory">
             {" "}
-            <span>view more >> </span>
+            <button className="btn btn-outline-danger px-2 mx-15">
+              view more >>{" "}
+            </button>
           </Link>
         </div>
         <ListCategory />
 
-        <div className="title-nav">
+        <div className="title-nav ">
           <h1>products</h1>
 
           <Link to="/products">
             {" "}
-            <span>view more >> </span>
+            <button className="btn btn-outline-danger px-2 mx-15">
+              view more >>{" "}
+            </button>
           </Link>
         </div>
 

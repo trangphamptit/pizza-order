@@ -5,7 +5,7 @@ import { AppContext } from "../../services/AppContext";
 class Products extends Component {
   componentDidMount() {
     const categoryId = this.props.match.params.id;
-    // console.log(categoryId);
+
     this.context.getProductscategory(categoryId);
   }
 

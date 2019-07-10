@@ -3,7 +3,7 @@ import "./BestSellerProduct.scss";
 import product1 from "../../image/product.png";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../services/AppContext";
-import BestSeller from "./BestSeller";
+
 import { numberFormat } from "../../components/CurrencyFormat";
 class Product extends Component {
   _renderSize(size) {

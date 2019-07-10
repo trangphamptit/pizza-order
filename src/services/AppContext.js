@@ -19,10 +19,6 @@ class AppProvider extends Component {
       modalOpen: false,
       orders: [],
 
-      // cartSubTotal: 0,
-      // cartTotal: 0,
-      // total: 0,
-
       getProducts: async () => {
         const products = await getProducts();
         this.setState({ products });

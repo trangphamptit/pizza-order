@@ -29,7 +29,6 @@
   }
   .footer-right {
     justify-content: flex-end;
-    margin-right: 30px;
     display: flex;
     align-items: center;
   }
@@ -55,13 +54,17 @@
 .fa-youtube {
   background-color: red;
 }
-@media only screen and (max-width: 530px) {
-  .footer-left {
-    display: none;
-  }
-  .footer-right {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+@media only screen and (max-width: 768px) {
+  .footer-container {
+    display: block;
+    .footer-left {
+      display: flex;
+      justify-content: space-between;
+    }
+    .footer-right {
+      margin: auto;
+      display: flex;
+      justify-content: center;
+    }
   }
 }

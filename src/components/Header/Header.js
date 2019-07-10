@@ -38,6 +38,37 @@ class Header extends Component {
             <div>
               <div>
                 <ul>
+                  <li className="itemLast">
+                    {user && user.name ? (
+                      <div className="user">
+                        <span className="user-item">Hello, {user.name} </span>
+
+                        <div
+                          className="user-item logout"
+                          onClick={e => {
+                            e.preventDefault();
+                            logout();
+                          }}
+                        >
+                          logout
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="user">
+                        <Link to="/login">
+                          {" "}
+                          <span className="user-item login-header">login </span>
+                        </Link>{" "}
+                        /{" "}
+                        <Link to="/signup">
+                          {" "}
+                          <span className="user-item signup-header">
+                            signup{" "}
+                          </span>
+                        </Link>
+                      </div>
+                    )}
+                  </li>
                   <li>
                     <Link to="/">Home</Link>
                   </li>

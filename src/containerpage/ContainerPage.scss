@@ -1,5 +1,4 @@
 .mainpage {
-  // background-color: tomato;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -29,18 +28,19 @@ h4,
 h5,
 h6 {
   margin: 0;
-  /* font-family: "Roboto", sans-serif; */
   font-weight: 600;
   color: white;
 }
+
 h1 {
   font-size: 1.5rem;
   text-transform: capitalize;
   color: white;
+  margin-right: 15px;
 }
 .title-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   justify-items: center;
   align-items: center;
   color: white;
@@ -57,19 +57,3 @@ span {
 .error {
   color: red;
 }
-// button[type="submit"] {
-//   background-color: unset;
-//   width: auto;
-//   border-radius: 8px;
-//   padding: 14px 20px;
-//   cursor: pointer;
-//   border: 1px solid black;
-//   color: black;
-//   margin-top: 15px;
-//   margin-bottom: 15px;
-// }
-// button[type="submit"]:hover {
-//   border: 1px solid red;
-//   color: red;
-//   transition: 1ms;
-// }

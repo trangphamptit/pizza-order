@@ -61,7 +61,6 @@ class Details extends Component {
       description,
       image,
       name,
-      price,
       variantProducts
     } = this.state.details;
     if (_id) {

@@ -26,8 +26,6 @@ class Modal extends Component {
                       className="img-fluid"
                       alt="success"
                     />
-                    {/* <h5>{title}</h5> */}
-                    {/* <h5 className="text-muted">giá: $ {price}</h5> */}
 
                     <Link to="/">
                       <button

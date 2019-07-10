@@ -9,7 +9,7 @@ class About extends Component {
         <div className="aboutpage col-12">
           <div className="about-item">
             <div className="about-img col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
-              <img src={about1} />
+              <img alt="about1" src={about1} />
             </div>
             <div className="about-infor col-xl-8 col-lg-8 col-md-12 col-sm-12 ">
               <p>
@@ -41,12 +41,12 @@ class About extends Component {
               </p>
             </div>
             <div className="about-img col-xl-8 col-lg-8 col-md-12 col-sm-12 ">
-              <img src={about2} />
+              <img alt="about2" src={about2} />
             </div>
           </div>
           <div className="about-item">
             <div className="about-img col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
-              <img src={about1} />
+              <img alt="about2" src={about1} />
             </div>
             <div className="about-infor col-xl-8 col-lg-8 col-md-12 col-sm-12 ">
               <p>

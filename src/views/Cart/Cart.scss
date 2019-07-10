@@ -1,0 +1,22 @@
+table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 80%;
+}
+
+th,
+td {
+  border: none;
+  text-align: left;
+  padding: 8px;
+  color: white;
+}
+
+#table {
+  overflow-x: auto;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

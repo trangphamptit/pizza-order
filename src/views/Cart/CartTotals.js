@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { numberFormat } from "../../components/CurrencyFormat";
 export default class CartTotals extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   checkLogin = () => {
     console.log(this.props.history);
     let user = localStorage.getItem("user");
@@ -19,41 +15,49 @@ export default class CartTotals extends Component {
     const { clearCart } = this.props.value;
     return (
       <React.Fragment>
-        {/* <div className="col-12 ">
-          <div className="row"> */}
-        <div className="col-10 mt-2 ml-sm-5 ml-md-auto col-sm-8 text-capitalize">
+        <div className="row mt-5 text-capitalize">
+          <ul
+            className="CartTotals col-10 m-auto "
+            style={{
+              textAlign: "center"
+            }}
+          >
+            <li>
+              <span>total:</span>
+              <strong>{numberFormat(this.props.total)} </strong>
+            </li>
+
+            <li>
+              <span>shipping fee:</span>
+              <strong>{numberFormat(1)}</strong>
+            </li>
+
+            <li className=" text-capitalize">
+              <span>BILL:</span>
+              <strong>{numberFormat(this.props.total + 1)}</strong>
+            </li>
+          </ul>
+        </div>
+        <div className="row mt-5 text-capitalize d-flex justify-content-center ">
+          <Link>
+            <button
+              className="btn btn-outline-danger text-uppercase mb-3 px-5 "
+              type="button"
+              onClick={this.checkLogin}
+              style={{ marginRight: "20px" }}
+            >
+              SUBMIT
+            </button>
+          </Link>
           <Link to="/cart">
             <button
-              className="btn btn-outline-danger text-uppercase mb-3 px-5"
+              className="btn btn-outline-danger text-uppercase mb-3 px-2 "
               type="button"
               onClick={() => clearCart()}
             >
-              clear cart
+              <i class="fas fa-trash-alt" />
             </button>
           </Link>
-          {/* </div> */}
-          <h5>
-            <span className="text-title">total:</span>
-            <strong>{numberFormat(this.props.total)} </strong>
-          </h5>
-
-          <h5>
-            <span className="text-title">shipping fee:</span>
-            <strong>{numberFormat(1)}</strong>
-          </h5>
-
-          <h5>
-            <span className="text-title">Bill:</span>
-            <strong>{numberFormat(this.props.total + 1)}</strong>
-          </h5>
-          <button
-            className="btn btn-outline-danger text-uppercase mb-3 px-5"
-            type="button"
-            // onClick={() => clearCart()}
-            onClick={this.checkLogin}
-          >
-            SUBMIT
-          </button>
         </div>
       </React.Fragment>
     );

@@ -2,11 +2,9 @@
   margin-bottom: 15px;
   .card {
     border-color: transparent;
-    // background-color: var(--mainWhite);
   }
 
   .card-footer {
-    // background: var(--mainWhite);
     border-top: transparent;
     display: flex;
     justify-content: space-between;
@@ -21,7 +19,6 @@
       font-style: italic;
       margin-bottom: 0px;
 
-      // font-weight: 700;
       font-size: 0.8rem;
     }
   }
@@ -31,7 +28,6 @@
       box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
     }
     .card-footer {
-      // background-color: var(--lightBlue);
       color: white;
     }
   }

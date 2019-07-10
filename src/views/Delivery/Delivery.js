@@ -13,7 +13,9 @@ class Delivery extends Component {
         onSubmit={this.props.handleSubmit}
       >
         <h1 className="delivery-title">delivery </h1>
-
+        <span>
+          <strong>Address:</strong>
+        </span>
         <input
           type="text"
           name="address"
@@ -24,15 +26,22 @@ class Delivery extends Component {
           <ErrorMessage name="address" />
         </div>
 
+        <span>
+          <strong>Note:</strong>
+        </span>
         <input
           type="text"
           name="guide"
-          placeholder=" guide"
+          placeholder=" note"
           onChange={this.props.handleChange}
         />
         <div className="error">
           <ErrorMessage name="guide" />
         </div>
+
+        <span>
+          <strong>Time for delivery:</strong>
+        </span>
         <input
           type="time"
           name="time"
@@ -43,6 +52,10 @@ class Delivery extends Component {
           <ErrorMessage name="time" />
         </div>
 
+        <span>
+          <strong>Payment method:</strong>
+        </span>
+
         <div className="choosepayment">
           <div className="paymenttype col-6">
             <input
@@ -50,6 +63,7 @@ class Delivery extends Component {
               name="payment"
               value="delivery"
               id="delivery"
+              checked
               onChange={this.props.handleChange}
             />{" "}
             <label htmlFor="delivery">
@@ -77,24 +91,24 @@ class Delivery extends Component {
             <ErrorMessage name="payment" />
           </div>
         </div>
-        <div className="delivery-footer ">
-          <button
-            className="btn btn-outline-danger text-uppercase mb-3 px-5 "
-            type="submit"
-            onClick={this.props.history.goBack}
-          >
-            {" "}
-            Go back{" "}
-          </button>
-          <button
-            className="btn btn-outline-danger text-uppercase mb-3 px-5"
-            type="submit"
-            onClick={this.props.handleSubmit}
-          >
-            {" "}
-            Submit{" "}
-          </button>
-        </div>
+        {/* <div className="delivery-footer "> */}
+        <button
+          className="btn btn-outline-danger  btn-large btn-block text-uppercase mb-15 "
+          type="submit"
+          onClick={this.props.handleSubmit}
+        >
+          {" "}
+          Submit{" "}
+        </button>
+        <button
+          className="btn mb-15 px-5 "
+          type="submit"
+          onClick={this.props.history.goBack}
+        >
+          <i className="fas fa-arrow-left " />
+          Go back
+        </button>
+        {/* </div> */}
       </Form>
     );
   }
