@@ -41,7 +41,7 @@ const LoginForm = props => {
       </div>
 
       <button
-        className=" btn btn-outline-danger text-uppercase mb-3 px-5"
+        className=" btn btn-danger text-uppercase mb-3 px-5"
         type="submit"
       >
         Login

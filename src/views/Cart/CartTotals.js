@@ -41,7 +41,7 @@ export default class CartTotals extends Component {
         <div className="row mt-5 text-capitalize d-flex justify-content-center ">
           <Link>
             <button
-              className="btn btn-outline-danger text-uppercase mb-3 px-5 "
+              className="btn btn-danger text-uppercase mb-3 px-5 "
               type="button"
               onClick={this.checkLogin}
               style={{ marginRight: "20px" }}
@@ -51,7 +51,7 @@ export default class CartTotals extends Component {
           </Link>
           <Link to="/cart">
             <button
-              className="btn btn-outline-danger text-uppercase mb-3 px-2 "
+              className="btn btn-danger text-uppercase mb-3 px-2 "
               type="button"
               onClick={() => clearCart()}
             >

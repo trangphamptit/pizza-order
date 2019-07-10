@@ -23,9 +23,7 @@ class Home extends Component {
 
           <Link to="/bestseller">
             {" "}
-            <button className="btn btn-outline-danger px-2">
-              view more >>{" "}
-            </button>
+            <button className="btn btn-danger px-2">view more >> </button>
           </Link>
         </div>
 
@@ -49,9 +47,7 @@ class Home extends Component {
 
           <Link to="/listcategory">
             {" "}
-            <button className="btn btn-outline-danger px-2 ">
-              view more >>{" "}
-            </button>
+            <button className="btn btn-danger px-2 ">view more >> </button>
           </Link>
         </div>
         <ListCategory />
@@ -61,9 +57,7 @@ class Home extends Component {
 
           <Link to="/products">
             {" "}
-            <button className="btn btn-outline-danger px-2">
-              view more >>{" "}
-            </button>
+            <button className="btn btn-danger px-2">view more >> </button>
           </Link>
         </div>
 
