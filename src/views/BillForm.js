@@ -108,9 +108,10 @@ class BillForm extends Component {
                         </div>
                         <div>Address: </div>
                         <div>
-                          {this.state.deliveryinfor.district}-
+                          {/* {this.state.deliveryinfor.district}-
                           {this.state.deliveryinfor.streetname}-
-                          {this.state.deliveryinfor.housenumber}
+                          {this.state.deliveryinfor.housenumber} */}
+                          {this.state.deliveryinfor.address}
                         </div>
                         <div>Email: {this.state.user.email}</div>
                         <div>Phone:{this.state.user.phone}</div>

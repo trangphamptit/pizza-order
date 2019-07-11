@@ -12,6 +12,7 @@ class Products extends Component {
 
     return (
       <div className="products">
+        <h1 className="bestsellerpage my-30 text-center">ALL PRODUCTS</h1>
         <div className="row">
           {products.map((product, index) => (
             <Product key={index} product={product} />

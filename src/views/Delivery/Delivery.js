@@ -64,6 +64,7 @@ class Delivery extends Component {
               value="delivery"
               id="delivery"
               onChange={this.props.handleChange}
+              checked
             />{" "}
             <label htmlFor="delivery">
               <img
@@ -125,12 +126,12 @@ const FormikForm = withFormik({
       address: "",
       guide: "",
       time: "",
-      payment: ""
+      payment: "delivery"
     };
   },
 
   handleSubmit: (values, { props, setSubmitting }) => {
-    console.log("Submitted delivery:", values);
+    // console.log("Submitted delivery:", values);
     let deliveryinfor = values;
     localStorage.setItem("deliveryinfor", JSON.stringify(deliveryinfor));
     props.history.push("/billform");

@@ -9,7 +9,7 @@ class ListCategory extends Component {
 
   render() {
     const { categories } = this.context;
-    console.log(categories);
+    // console.log(categories);
     return (
       <div className="listcategory row">
         {categories.map(category => (

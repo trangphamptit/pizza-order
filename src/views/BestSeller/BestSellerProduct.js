@@ -18,7 +18,7 @@ class Product extends Component {
     const { bestseller } = this.props;
     // console.log(bestseller);
     const { addToCart } = this.context;
-    const { _id, image, name, variantProducts } = bestseller;
+    const { _id, image, name, variantProducts, discountAmount } = bestseller;
     return (
       <div className="product col-xl-3 col-lg-3 col-md-3 col-sm-12">
         <div className="card ">
@@ -29,6 +29,11 @@ class Product extends Component {
                 alt="product"
                 className="card-img-top"
               />
+              {discountAmount > 0 ? (
+                <div className="discount">
+                  <span> - ${discountAmount}</span>
+                </div>
+              ) : null}
             </Link>
             <Link to={`/cart`}>
               <button

@@ -2,6 +2,25 @@
   margin-bottom: 15px;
   .card {
     border-color: transparent;
+    position: relative;
+    .discount {
+      color: white;
+      padding: 5px;
+
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: red;
+      top: 20px;
+      right: 20px;
+      position: absolute;
+      span {
+        font-size: 1.5rem;
+      }
+    }
   }
 
   .card-footer {

@@ -9,7 +9,7 @@ class Product extends Component {
   _renderSize(size) {
     // console.log("size", size);
     return (
-      <div className="mr-1">
+      <div style={{ display: "flex" }}>
         Size {size.value} - $ {size.price}
       </div>
     );
@@ -37,6 +37,11 @@ class Product extends Component {
                 alt="product"
                 className="card-img-top"
               />
+              {discountAmount > 0 ? (
+                <div className="discount">
+                  <span> - ${discountAmount}</span>
+                </div>
+              ) : null}
             </Link>
             <Link to="/cart">
               <button
@@ -60,7 +65,6 @@ class Product extends Component {
               variantProducts[0] &&
               this._renderSize(variantProducts[0])}
           </h5>
-          <h5 className="product-price ">{discountAmount}</h5>
         </div>
         {/* <RatingProduct /> */}
       </div>

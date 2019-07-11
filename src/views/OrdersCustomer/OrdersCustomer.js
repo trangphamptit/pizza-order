@@ -30,7 +30,7 @@ class OrdersCustomer extends Component {
     // console.log(products);
     if (user && products.length > 0) {
       return (
-        <div className="container">
+        <div className="orders container">
           <div className="card" style={{ marginBottom: "15px" }}>
             <div className="card-header text-capitalize">
               Order history
@@ -68,7 +68,7 @@ class OrdersCustomer extends Component {
                             );
                           }
                           if (detail) {
-                            console.log("detail", detail);
+                            // console.log("detail", detail);
                             name = detail.name;
                           }
                           return (
