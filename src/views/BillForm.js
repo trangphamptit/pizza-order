@@ -94,8 +94,7 @@ class BillForm extends Component {
                         </div>
                         <div>Address: </div>
                         <div>
-                          97 Man Thiên, phường Hiệp Phú, quận 9, Thành phố Hồ
-                          Chí Minh
+                          97 Man Thien, Hiep Phu Wards, District 9, HCM City
                         </div>
                         <div>Email: info@webz.com.pl</div>
                         <div>Phone: +48 444 666 3333</div>
@@ -121,12 +120,12 @@ class BillForm extends Component {
                       <table className="table table-striped">
                         <thead>
                           <tr>
-                            <th className="center">number</th>
-                            <th>product name</th>
-                            <th>description</th>
-                            <th className="right">price</th>
-                            <th className="center">count</th>
-                            <th className="right">total</th>
+                            <th className="center">Number</th>
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th className="right">Price</th>
+                            <th className="center">Count</th>
+                            <th className="right">Total</th>
                           </tr>
                         </thead>
                         <tbody>
